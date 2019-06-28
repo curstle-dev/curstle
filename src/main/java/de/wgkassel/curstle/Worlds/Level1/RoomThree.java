@@ -1,6 +1,6 @@
 package de.wgkassel.curstle.Worlds.Level1;
 
-import de.wgkassel.curstle.MiniMap;
+import de.wgkassel.curstle.RoomContent.MiniMap;
 import de.wgkassel.curstle.gates.BaseGate;
 import de.wgkassel.curstle.gates.ThreeToOneGate;
 import de.wgkassel.curstle.player.Hearts;

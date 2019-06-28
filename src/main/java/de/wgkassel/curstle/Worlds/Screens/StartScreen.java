@@ -1,5 +1,6 @@
-package de.wgkassel.curstle;
+package de.wgkassel.curstle.Worlds.Screens;
 
+import de.wgkassel.curstle.Music;
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
 import de.wgkassel.curstle.gates.MainGate;
 import de.wgkassel.curstle.player.Knight;
@@ -16,7 +17,7 @@ public class StartScreen extends BaseWorld {
     private ChangeCharacter cc2;
     public static int ccc = 0; //change character counter: used to define which character is selected.
     int i = 100;
-    static boolean shouldStart = false;
+    public static boolean shouldStart = false;
     private boolean doorgenerated = false;
     private int prevCcc = 0;
 

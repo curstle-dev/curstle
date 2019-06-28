@@ -1,4 +1,4 @@
-package de.wgkassel.curstle;
+package de.wgkassel.curstle.Worlds.Screens;
 
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
 import de.wgkassel.curstle.player.Knight;

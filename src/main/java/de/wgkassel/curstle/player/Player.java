@@ -1,10 +1,10 @@
 package de.wgkassel.curstle.player;
 
-import de.wgkassel.curstle.Endscreen;
+import de.wgkassel.curstle.Worlds.Screens.Endscreen;
 import de.wgkassel.curstle.RoomContent.DecoKnight;
 import de.wgkassel.curstle.RoomContent.Shelf;
 import de.wgkassel.curstle.RoomContent.Wall;
-import de.wgkassel.curstle.VictoryScreen;
+import de.wgkassel.curstle.Worlds.Screens.VictoryScreen;
 import de.wgkassel.curstle.Worlds.Level1.*;
 import de.wgkassel.curstle.Worlds.Level2.*;
 import de.wgkassel.curstle.enemy.*;

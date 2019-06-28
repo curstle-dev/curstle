@@ -1,7 +1,7 @@
 package de.wgkassel.curstle.Worlds.Level2;
 
 
-import de.wgkassel.curstle.MiniMap;
+import de.wgkassel.curstle.RoomContent.MiniMap;
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
 import de.wgkassel.curstle.enemy.Endboss;
 import de.wgkassel.curstle.enemy.EndbossBar;

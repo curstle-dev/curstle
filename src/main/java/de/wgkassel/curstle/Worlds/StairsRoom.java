@@ -1,5 +1,6 @@
-package de.wgkassel.curstle;
+package de.wgkassel.curstle.Worlds;
 
+import de.wgkassel.curstle.RoomContent.MiniMap;
 import de.wgkassel.curstle.RoomContent.Shelf;
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
 import de.wgkassel.curstle.gates.StairsRoom2_1Gate;

@@ -1,8 +1,8 @@
-package de.wgkassel.curstle;
+package de.wgkassel.curstle.Worlds.Screens;
 
+import de.wgkassel.curstle.Music;
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
 import greenfoot.Greenfoot;
-import greenfoot.GreenfootSound;
 
 public class OptionsScreen extends BaseWorld {
     int luthercounter;
