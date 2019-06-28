@@ -3,7 +3,6 @@ package de.wgkassel.curstle.items;
 import de.wgkassel.curstle.RoomContent.SilentObjects;
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
 import de.wgkassel.curstle.player.Player;
-
 import java.util.HashMap;
 
 
