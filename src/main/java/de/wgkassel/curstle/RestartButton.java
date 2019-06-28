@@ -1,6 +1,5 @@
 package de.wgkassel.curstle;
 
-import com.sun.xml.internal.rngom.parse.host.Base;
 import de.wgkassel.curstle.enemy.Boss;
 import de.wgkassel.curstle.enemy.Endboss;
 import de.wgkassel.curstle.gates.BaseGate;
