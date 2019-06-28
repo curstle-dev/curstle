@@ -1,0 +1,92 @@
+#Greenfoot project file
+
+# Class definitions
+class.de.wgkassel.curstle.RoomContent.Door.image=door_placeholder.png
+class.de.wgkassel.curstle.StartScreen.image=StartScreen.png
+class.de.wgkassel.curstle.Worlds.Level1.RoomOne.image=world.png
+class.de.wgkassel.curstle.Button.image=actor.png
+class.de.wgkassel.curstle.enemy.Bug.image=enemy.png
+class.de.wgkassel.curstle.enemy.Endboss.image=krasser_enemy.png
+class.de.wgkassel.curstle.enemy.Enemy2.image=bee2.png
+class.de.wgkassel.curstle.enemy.BeeBullet.image=beeBullet2.png
+
+class.de.wgkassel.curstle.Worlds.Level1.RoomOne.image=stone_floor.png
+class.de.wgkassel.curstle.Worlds.Level1.RoomBoss.image=stone_floor.png
+class.de.wgkassel.curstle.Worlds.Level1.RoomTwo.image=stone_floor.png
+class.de.wgkassel.curstle.Worlds.Level1.RoomThree.image=stone_floor.png
+class.de.wgkassel.curstle.RoomContent.Wall.image=stone_wall.png
+class.de.wgakssel.curstle.RoomContent.BrickWall.image=brickWall.png
+class.de.wgkassel.curstle.RoomContent.Shelf.image=Regal.png
+class.de.wgkassel.curstle.RoomContent.CornerWall.image=stone_wall_corner.png
+
+class.de.wgkassel.curstle.Treasure.image=treasure.png
+class.de.wgkassel.curstle.Treasure.image=treasure_hover.png
+class.de.wgkassel.curstle.ItemsWindow.image=treasure_bg.png
+class.de.wgkassel.curstle.Worlds.Level2.StairsRoom2_1.image=wood_floor.png
+class.de.wgkassel.curstle.Worlds.Level2.RoomOne2.image=wood_floor.png
+class.de.wgkassel.curstle.Worlds.Level2.RoomTwo2.image=wood_floor.png
+class.de.wgkassel.curstle.Worlds.Level2.RoomThree2.image=wood_floor.png
+class.de.wgkassel.curstle.Worlds.Level2.RoomFour2.image=wood_floor.png
+class.de.wgkassel.curstle.Worlds.Level2.RoomFive2.image=wood_floor.png
+class.de.wgkassel.curstle.Worlds.Level2.RoomSix2.image=wood_floor.png
+class.de.wgkassel.curstle.Worlds.Level2.RoomBoss2.image=wood_floor.png
+
+class.de.wgkassel.curstle.items.Ring.image=ring.png
+
+
+class.de.wgkassel.curstle.enemy.EndbossImage.image=Endboss.png
+class.de.wgkassel.curstle.RoomOne.image=stone_floor.png
+class.de.wgkassel.curstle.RoomBoss.image=stone_floor.png
+class.de.wgkassel.curstle.RoomTwo.image=stone_floor.png
+class.de.wgkassel.curstle.RoomThree.image=stone_floor.png
+class.de.wgkassel.curstle.Wall.image=stone_wall.png
+class.de.wgkassel.curstle.StairsRoom.image=wood_floor.png
+class.de.wgkassel.curstle.Shelf.image=Regal.png
+class.de.wgkassel.curstle.CornerWall.image=stone_wall_corner.png
+
+class.de.wgkassel.curstle.enemy.Boss.image=Boss.png
+class.de.wgkassel.curstle.enemy.WeaponOfTheBoss.image=Endboss_sword.png
+class.de.wgkassel.curstle.Exit.image=door.png
+class.de.wgkassel.curstle.VictoryText.image=victory.png
+class.de.wgkassel.curstle.enemy.EndbossWeapon.image=weaponoftheboss.png
+class.de.wgkassel.curstle.VictoryScreen.image=EndScreen.png
+class.de.wgkassel.curstle.Endscreen.image=deathscreen.png
+
+
+# Editor Settings
+editor.fx.0.height=0
+editor.fx.0.width=0
+editor.fx.0.x=0
+editor.fx.0.y=0
+
+# Main Window Settings
+mainWindow.height=1000
+mainWindow.width=1700
+mainWindow.x=40
+mainWindow.y=40
+
+# Misc Project Settings
+package.numDependencies=0
+package.numTargets=1
+project.charset=UTF-8
+readme.height=58
+readme.name=@README
+readme.width=47
+readme.x=10
+readme.y=10
+
+# Target definitions (unknown use)
+target1.height=50
+target1.name=de.wgkassel.curstle.StartScreen
+target1.showInterface=false
+target1.type=ClassTarget
+target1.typeParameters=
+target1.width=80
+target1.x=0
+target1.y=0
+
+# API Version
+version=3.0.0
+
+# Misc
+world.lastInstantiated=de.wgkassel.curstle.StartScreen
