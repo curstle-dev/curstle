@@ -20,6 +20,7 @@ public abstract class Player extends Actor {
 
     public static final double DEFAULT_MULTIPLIER = 0.001;
 
+    //prevent the enemies from getting more than one dmg per hit
     private boolean allowHit = true;
     private boolean allowHitBoss = true;
     private boolean allowHitBossShots = true;
