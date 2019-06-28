@@ -57,11 +57,10 @@ public class Sword extends Actor {
 
                 allowHit = false;
 
-            } else {
-                allowHit = true;
+            }
             }
         }
-    }
+
 
     /**
      * checks if there is a BEEEEEEEE
@@ -75,8 +74,6 @@ public class Sword extends Actor {
 
                 allowHitEnemy2 = false;
 
-            } else {
-                allowHitEnemy2 = true;
             }
         }
     }
@@ -89,10 +86,9 @@ public class Sword extends Actor {
             Boss.lives--;
             Greenfoot.playSound("hit.wav");
             allowBossHit = false;
-        } else if (getObjectsInRange(swordRange, BossImage.class).isEmpty()) {
-            allowBossHit = true;
         }
-    }
+        }
+
 
     /**
      * check if theres an Endboss
@@ -102,8 +98,6 @@ public class Sword extends Actor {
             Endboss.live--;
             Greenfoot.playSound("hit.wav");
             allowEndbossHit = false;
-        } else if (getObjectsInRange(swordRange, EndbossImage.class).isEmpty()) {
-            allowEndbossHit = true;
         }
     }
 
