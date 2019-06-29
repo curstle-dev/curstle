@@ -23,8 +23,8 @@ public class Boss extends Actor {
 
 
     public static int lives = 30;
-    public int walk = 1;
-    public int ZigZag = 1;
+    private int walk = 1;
+    private int ZigZag = 1;
 
     public Boss() {
         this.getImage().setTransparency(0);
@@ -35,11 +35,7 @@ public class Boss extends Actor {
     @Override
     public void act() {
         super.act();
-
-        if (attack() || !attackDone) {
-            handleCooldown();
-            return;
-        }
+        handleCooldown();
         if (shouldBeZigZagging) {
             zigZag();
         } else {
@@ -55,18 +51,20 @@ public class Boss extends Actor {
     }
 
     private void handleCooldown() {
-        if (lastTurn == 0L) {
-            lastTurn = System.currentTimeMillis();
-        } else if (lastTurn - System.currentTimeMillis() <= COOLDOWN) {
-            attackDone = true;
-            lastTurn = System.currentTimeMillis();
+        if (attack() || !attackDone) {
+            if (lastTurn == 0L) {
+                lastTurn = System.currentTimeMillis();
+            } else if (lastTurn - System.currentTimeMillis() <= COOLDOWN) {
+                attackDone = true;
+                lastTurn = System.currentTimeMillis();
+            }
         }
     }
 
     /**
      * method looks if the Boss can attack the Player
      *
-     * @return
+     *
      */
     private boolean attack() {
         if (whenCanIAttackThePlayer) {
@@ -88,7 +86,7 @@ public class Boss extends Actor {
     /**
      * method looks if the Boss is in the startarea (quarter obenlinks)
      *
-     * @return
+     *
      */
     private boolean isInStartArea() {
         return (this.getX() <= 250 && this.getX() >= 0)
@@ -104,21 +102,21 @@ public class Boss extends Actor {
         if (this.getY() < 500 && this.getX() > BaseWorld.WIDTH - 200 && walk == 1) {
             turn(90);
             walk++;
-            return;
+
         } else if (this.getY() > BaseWorld.HEIGHT - 200 && this.getX() > BaseWorld.WIDTH - 200 && walk == 2) {
             turn(90);
             walk++;
-            return;
+
         } else if (this.getY() > BaseWorld.HEIGHT - 200 && this.getX() < 200 && walk == 3) {
             turn(90);
             walk++;
-            return;
+
         } else if (this.getY() < 200 && this.getX() < 200 && walk == 4) {
             turn(90);
             shouldBeZigZagging = true;
             firstZigZag = true;
             ZigZag = 1;
-            return;
+
         }
     }
 
@@ -204,7 +202,7 @@ public class Boss extends Actor {
     /**
      * Boss generates a Weapon which makes damage to the Player
      */
-    public void attackThePlayer() {
+    private void attackThePlayer() {
         if (System.currentTimeMillis() - shotPause > 2000) {
             doShoot(0);
             doShoot(18);
@@ -236,7 +234,7 @@ public class Boss extends Actor {
      * Boss dies
      */
 
-    public void die() {
+    private void die() {
         if (lives <= 0) {
             getWorld().removeObject(image);
             getWorld().removeObject(this);
