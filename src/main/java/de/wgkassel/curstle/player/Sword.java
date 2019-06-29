@@ -49,36 +49,32 @@ public class Sword extends Actor {
      * checks if there is a Bug
      */
     public void checkEnemy() {
-
+        List<MainEnemy> intersectingObjects = getObjectsInRange(swordRange, MainEnemy.class);
         if (allowHit) {
-            List<MainEnemy> intersectingObjects = getObjectsInRange(swordRange, MainEnemy.class);
             if (intersectingObjects != null) {
                 intersectingObjects.forEach(MainEnemy::lowerHealth);
-
                 allowHit = false;
-
-            } else {
-                allowHit = true;
             }
+        } else if (intersectingObjects == null) {
+            allowHit = true;
         }
     }
+
 
     /**
      * checks if there is a BEEEEEEEE
      */
     public void checkEnemy2() {
-
+        List<Enemy2> intersectingObjects = getObjectsInRange(swordRange, Enemy2.class);
         if (allowHitEnemy2) {
-            List<Enemy2> intersectingObjects = getObjectsInRange(swordRange, Enemy2.class);
             if (intersectingObjects != null) {
                 intersectingObjects.forEach(Enemy2::lowerHealth);
-
                 allowHitEnemy2 = false;
-
-            } else {
-                allowHitEnemy2 = true;
             }
+        } else if (intersectingObjects == null) {
+            allowHitEnemy2 = true;
         }
+
     }
 
     /**
