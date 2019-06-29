@@ -35,7 +35,11 @@ public class Boss extends Actor {
     @Override
     public void act() {
         super.act();
-        handleCooldown();
+
+        if (attack() || !attackDone) {
+            handleCooldown();
+            return;
+        }
         if (shouldBeZigZagging) {
             zigZag();
         } else {
@@ -51,13 +55,11 @@ public class Boss extends Actor {
     }
 
     private void handleCooldown() {
-        if (attack() || !attackDone) {
-            if (lastTurn == 0L) {
-                lastTurn = System.currentTimeMillis();
-            } else if (lastTurn - System.currentTimeMillis() <= COOLDOWN) {
-                attackDone = true;
-                lastTurn = System.currentTimeMillis();
-            }
+        if (lastTurn == 0L) {
+            lastTurn = System.currentTimeMillis();
+        } else if (lastTurn - System.currentTimeMillis() <= COOLDOWN) {
+            attackDone = true;
+            lastTurn = System.currentTimeMillis();
         }
     }
 
