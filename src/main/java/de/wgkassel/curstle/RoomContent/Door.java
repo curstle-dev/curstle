@@ -11,5 +11,5 @@ public class Door extends SilentObjects {
         super.act();
     }
 
-
+/**henrik liebt pimmel*/
 }
