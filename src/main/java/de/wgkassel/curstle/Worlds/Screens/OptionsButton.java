@@ -5,6 +5,7 @@ import de.wgkassel.curstle.Worlds.Level1.RoomBoss;
 import de.wgkassel.curstle.Worlds.Screens.OptionsScreen;
 import de.wgkassel.curstle.Worlds.Screens.VictoryScreen;
 import de.wgkassel.curstle.Worlds.StairsRoom;
+import de.wgkassel.curstle.Worlds.TestRoom;
 import greenfoot.Actor;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
@@ -26,6 +27,7 @@ public class OptionsButton extends Actor {
         generateVictoryScreen();
         generateYEET();
         makeAleynaHappyAgain();
+        generateTestRoom();
     }
 
     public void generateVictoryScreen() {
@@ -51,6 +53,13 @@ public class OptionsButton extends Actor {
         if (Greenfoot.isKeyDown("b")) {
             RoomBoss test2 = new RoomBoss(((BaseWorld) getWorld()).getPlayer());
             Greenfoot.setWorld(test2);
+        }
+    }
+
+    public void generateTestRoom() {
+        if (Greenfoot.isKeyDown("t")) {
+            TestRoom testRoom = new TestRoom();
+            Greenfoot.setWorld(testRoom);
         }
     }
 }
