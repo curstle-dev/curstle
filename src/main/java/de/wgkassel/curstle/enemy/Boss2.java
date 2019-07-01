@@ -13,6 +13,9 @@ public class Boss2 extends Actor {
     private int countAim = 0;
     private int countAround = 0;
     State state = State.SPAWN;
+    PreviousState previousState = PreviousState.SPAWN;
+
+    enum PreviousState {AIM, AROUND, SPAWN, PAUSE;}
 
     enum State {AIM, AROUND, SPAWN, PAUSE;}
 
@@ -32,7 +35,7 @@ public class Boss2 extends Actor {
 
             case PAUSE:
             default:
-                pause();
+                longPause();
                 break;
             case AIM:
                 shootAtPlayer();
@@ -64,9 +67,9 @@ public class Boss2 extends Actor {
             allowAttack = false;
             countAim++;
 
-        }
-        else if (countAim >= 6){
+        } else if (countAim >= 6) {
             countAim = 0;
+            pause();
             state = State.AROUND;
         }
     }
@@ -74,11 +77,16 @@ public class Boss2 extends Actor {
 
     public void shootAround() {
         int x = 0;
-        if (System.currentTimeMillis() - shotPause > 2000) {
+        if (System.currentTimeMillis() - shotPause > 2000 && countAround < 6) {
             for (int i = 0; i <= 15; i++) {
                 generateBullet(x);
                 x = x + 24;
             }
+            countAround++;
+        }
+        else if(countAround >= 6){
+            pause();
+            state = State.SPAWN;
         }
     }
 
@@ -91,6 +99,7 @@ public class Boss2 extends Actor {
     }
 
     public void spawnEnemy() {
+        pause();
         for (int i = 0; i < 3; i++) {
             Bug bug = new Bug();
             getWorld().addObject(bug, getRandomX(), getRandomY());
@@ -129,7 +138,12 @@ public class Boss2 extends Actor {
     }
 
     public void pause() {
-        if(System.currentTimeMillis() - pause > 5000){
+        if (System.currentTimeMillis() - pause > 3000) {
+        }
+    }
+
+    public void longPause(){
+        if (System.currentTimeMillis() - pause > 10000) {
             state = State.AIM;
         }
     }
