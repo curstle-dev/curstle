@@ -13,6 +13,11 @@ public class Boss2FollowBullet extends Actor {
         super.act();
         move(5);
 
+        followPlayer();
+        remove();
+    }
+
+    public void followPlayer() {
         Player player = ((BaseWorld) getWorld()).getPlayer();
         int playerX = player.getX();
         int playerY = player.getY();
@@ -20,6 +25,12 @@ public class Boss2FollowBullet extends Actor {
         if (allowFollow) {
             turnTowards(playerX, playerY);
             allowFollow = false;
+        }
+    }
+
+    public void remove() {
+        if (isAtEdge()) {
+            getWorld().removeObject(this);
         }
     }
 }

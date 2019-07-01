@@ -58,7 +58,7 @@ public class OptionsButton extends Actor {
 
     public void generateTestRoom() {
         if (Greenfoot.isKeyDown("t")) {
-            TestRoom testRoom = new TestRoom();
+            TestRoom testRoom = new TestRoom(((BaseWorld) getWorld()).getPlayer());
             Greenfoot.setWorld(testRoom);
         }
     }

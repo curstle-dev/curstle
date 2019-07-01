@@ -1,10 +1,15 @@
 package de.wgkassel.curstle.enemy;
 
+import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
+import de.wgkassel.curstle.player.Player;
 import greenfoot.Actor;
+import greenfoot.Greenfoot;
 
 public class Boss2 extends Actor {
+    private boolean allowAttack = true;
     private long shotPause = System.currentTimeMillis();
-    State state = State.AROUND;
+    private long wait = System.currentTimeMillis();
+    State state = State.SPAWN;
 
     enum State {AIM, AROUND, SPAWN, PAUSE;}
 
@@ -28,6 +33,7 @@ public class Boss2 extends Actor {
                 break;
             case AIM:
                 shootAtPlayer();
+                delayAttack();
                 break;
             case AROUND:
                 shootAround();
@@ -40,14 +46,26 @@ public class Boss2 extends Actor {
 
     }
 
-    public void shootAtPlayer() {
-        Boss2FollowBullet boss2FollowBullet = new Boss2FollowBullet();
-        getWorld().addObject(boss2FollowBullet, this.getX(), this.getY());
+    public void delayAttack() {
+        if (System.currentTimeMillis() - wait > 2000) {
+            allowAttack = true;
+        }
     }
+
+
+    public void shootAtPlayer() {
+        if (allowAttack) {
+            Boss2FollowBullet boss2FollowBullet = new Boss2FollowBullet();
+            getWorld().addObject(boss2FollowBullet, this.getX(), this.getY());
+            wait = System.currentTimeMillis();
+            allowAttack = false;
+        }
+    }
+
 
     public void shootAround() {
         int x = 0;
-        if (System.currentTimeMillis() - shotPause > 500) {
+        if (System.currentTimeMillis() - shotPause > 2000) {
             for (int i = 0; i <= 15; i++) {
                 generateBullet(x);
                 x = x + 24;
@@ -64,7 +82,40 @@ public class Boss2 extends Actor {
     }
 
     public void spawnEnemy() {
+        for (int i = 0; i < 3; i++) {
+            Bug bug = new Bug();
+            getWorld().addObject(bug, getRandomX(), getRandomY());
+        }
+    }
 
+    /**
+     * creates a random X coordinate thats not in the player or near him
+     *
+     * @return
+     */
+    private int getRandomX() {
+        Player player = ((BaseWorld) getWorld()).getPlayer();
+        int playerX = player.getX();
+        int x;
+        do {
+            x = Greenfoot.getRandomNumber(getWorld().getWidth() - (170 * 2)) + 170;
+        } while (x > playerX - 100 && x < playerX + 100);
+        return x;
+    }
+
+    /**
+     * creates a random Y coordinate thats not on the player or near him
+     *
+     * @return
+     */
+    private int getRandomY() {
+        Player player = ((BaseWorld) getWorld()).getPlayer();
+        int playerY = player.getY();
+        int y;
+        do {
+            y = Greenfoot.getRandomNumber(getWorld().getHeight() - (170 * 2)) + 170;
+        } while (y > playerY - 100 && y < playerY + 100);
+        return y;
     }
 
     public void pause() {

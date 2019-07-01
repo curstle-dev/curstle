@@ -14,15 +14,21 @@ public class Boss2Bullet extends Actor {
     public void act() {
         super.act();
         aimAtPlayer();
+        remove();
     }
 
     public void aimAtPlayer() {
-if (followPlayer) {
-    Player player = ((BaseWorld) getWorld()).getPlayer();
-    int playerX = player.getX();
-    int playerY = player.getY();
+        if (followPlayer) {
+            Player player = ((BaseWorld) getWorld()).getPlayer();
+            int playerX = player.getX();
+            int playerY = player.getY();
 
-    turnTowards(playerX, playerY);
-}
+            turnTowards(playerX, playerY);
+        }
+    }
+    public void remove(){
+        if (isAtEdge()){
+            getWorld().removeObject(this);
+        }
     }
 }
