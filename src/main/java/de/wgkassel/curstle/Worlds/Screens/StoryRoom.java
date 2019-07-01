@@ -10,14 +10,13 @@ import greenfoot.Greenfoot;
 public class StoryRoom extends BaseWorld {
 
     int story = 1;
+    private ChangeCharacter cc;
 
     public StoryRoom(Player player) {
         super(player);
-    }
-
-    public void act() {
         prepare();
     }
+
 
     public void prepare() {
         addObject(player, getWidth() / 2, getHeight() / 10 * 9);
@@ -28,10 +27,14 @@ public class StoryRoom extends BaseWorld {
         Speechbubble speechbubble = new Speechbubble();
         addObject(speechbubble, 800, 500);
 
-        ChangeCharacter changeCharacter = new ChangeCharacter();
-        addObject(changeCharacter, 1000, 500);
+        cc = new ChangeCharacter();
+        addObject(cc, 1000, 500);
 
-        if (Greenfoot.mouseClicked(changeCharacter)) {
+    }
+
+
+    public void act() {
+        if (Greenfoot.mouseClicked(cc)) {
             story++;
         }
 
@@ -42,7 +45,7 @@ public class StoryRoom extends BaseWorld {
 
         if (story == 2) {
             Story story = new Story(2);
-            addObject(story, 800 , 500);
+            addObject(story, 800, 500);
         }
         if (story == 3) {
             Story story = new Story(3);
