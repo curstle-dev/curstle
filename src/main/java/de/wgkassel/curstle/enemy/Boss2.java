@@ -1,9 +1,13 @@
 package de.wgkassel.curstle.enemy;
 
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
+import de.wgkassel.curstle.Worlds.Level1.RoomOne;
+import de.wgkassel.curstle.Worlds.TestRoom;
 import de.wgkassel.curstle.player.Player;
 import greenfoot.Actor;
 import greenfoot.Greenfoot;
+
+import java.util.HashMap;
 
 public class Boss2 extends Actor {
     private boolean allowAttack = true;
@@ -102,14 +106,45 @@ public class Boss2 extends Actor {
     }
 
     public void spawnEnemy() {
-        pause();
+        /*
         for (int i = 0; i < 3; i++) {
-            Bug bug = new Bug();
-            getWorld().addObject(bug, getRandomX(), getRandomY());
+            Enemy2 enemy2 = new Enemy2();
+            getWorld().addObject(enemy2, getRandomX(), getRandomY());
         }
+*/
+        generateBugs();
         pause = System.currentTimeMillis();
         lastState = LastState.SPAWN;
         state = State.PAUSE;
+    }
+
+    public void generateBugs() {
+        Player player = ((BaseWorld) getWorld()).getPlayer();
+        HashMap<Class<? extends BaseWorld>, HashMap<Class<? extends BaseEnemy>, Integer>> levelmap = player.getLevelmap();
+        HashMap<Class<? extends BaseEnemy>, Integer> enemyMap = levelmap.get(this.getClass());
+        if (enemyMap != null) {
+            Integer bugAmount = enemyMap.get(Bug.class);
+
+            if (bugAmount == null) {
+                bugAmount = 0;
+            }
+
+            if (bugAmount >= 1) {
+                getWorld().addObject(new Bug(), getRandomX() / 8 * 5, getRandomY() / 4 * 3);
+            }
+
+            if (bugAmount >= 2) {
+                getWorld().addObject(new Bug(), getRandomX() / 5 * 2, getRandomY() / 12 * 5);
+            }
+
+            if (bugAmount >= 3) {
+                getWorld().addObject(new Bug(), getRandomX() / 4 * 3, getRandomY() / 4);
+            }
+
+            if (bugAmount >= 4) {
+                getWorld().addObject(new Bug(), getRandomX() / 7 * 5, getRandomY() / 2);
+            }
+        }
     }
 
     /**
