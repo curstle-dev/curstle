@@ -2,8 +2,7 @@ package de.wgkassel.curstle.Worlds;
 
 import de.wgkassel.curstle.MysteriousMan;
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
-import de.wgkassel.curstle.enemy.Boss2;
-import de.wgkassel.curstle.enemy.Bug;
+import de.wgkassel.curstle.enemy.Boss2.Boss2;
 import de.wgkassel.curstle.player.Player;
 
 public class TestRoom extends BaseWorld {

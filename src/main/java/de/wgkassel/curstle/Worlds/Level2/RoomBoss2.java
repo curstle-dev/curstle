@@ -3,8 +3,8 @@ package de.wgkassel.curstle.Worlds.Level2;
 
 import de.wgkassel.curstle.RoomContent.MiniMap;
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
-import de.wgkassel.curstle.enemy.Endboss;
-import de.wgkassel.curstle.enemy.EndbossBar;
+import de.wgkassel.curstle.enemy.Endboss.Endboss;
+import de.wgkassel.curstle.enemy.Endboss.EndbossBar;
 import de.wgkassel.curstle.gates.Boss2ToSixGate;
 import de.wgkassel.curstle.player.Hearts;
 import de.wgkassel.curstle.player.Player;

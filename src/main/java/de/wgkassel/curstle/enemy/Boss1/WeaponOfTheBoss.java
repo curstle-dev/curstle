@@ -1,4 +1,4 @@
-package de.wgkassel.curstle.enemy;
+package de.wgkassel.curstle.enemy.Boss1;
 
 import de.wgkassel.curstle.player.Sword;
 import greenfoot.Actor;

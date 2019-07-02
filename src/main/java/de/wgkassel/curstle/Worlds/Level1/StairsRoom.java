@@ -1,4 +1,4 @@
-package de.wgkassel.curstle.Worlds;
+package de.wgkassel.curstle.Worlds.Level1;
 
 import de.wgkassel.curstle.RoomContent.MiniMap;
 import de.wgkassel.curstle.RoomContent.Shelf;

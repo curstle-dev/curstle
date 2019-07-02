@@ -2,9 +2,7 @@ package de.wgkassel.curstle.Worlds.Screens;
 
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
 import de.wgkassel.curstle.Worlds.Level1.RoomBoss;
-import de.wgkassel.curstle.Worlds.Screens.OptionsScreen;
-import de.wgkassel.curstle.Worlds.Screens.VictoryScreen;
-import de.wgkassel.curstle.Worlds.StairsRoom;
+import de.wgkassel.curstle.Worlds.Level1.StairsRoom;
 import de.wgkassel.curstle.Worlds.TestRoom;
 import greenfoot.Actor;
 import greenfoot.Greenfoot;
