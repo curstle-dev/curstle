@@ -1,4 +1,4 @@
-package de.wgkassel.curstle.enemy;
+package de.wgkassel.curstle.enemy.Boss2;
 
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
 import de.wgkassel.curstle.player.Player;

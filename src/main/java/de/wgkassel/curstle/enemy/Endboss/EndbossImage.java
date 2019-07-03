@@ -1,4 +1,4 @@
-package de.wgkassel.curstle.enemy;
+package de.wgkassel.curstle.enemy.Endboss;
 
 import greenfoot.Actor;
 

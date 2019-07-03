@@ -1,11 +1,11 @@
 package de.wgkassel.curstle.gates;
 
 import de.wgkassel.curstle.RoomContent.SilentObjects;
-import de.wgkassel.curstle.Worlds.StairsRoom;
+import de.wgkassel.curstle.Worlds.Level1.StairsRoom;
 import de.wgkassel.curstle.Worlds.Level1.*;
 import de.wgkassel.curstle.Worlds.Level2.*;
-import de.wgkassel.curstle.enemy.Boss;
-import de.wgkassel.curstle.enemy.Endboss;
+import de.wgkassel.curstle.enemy.Boss1.Boss;
+import de.wgkassel.curstle.enemy.Endboss.Endboss;
 import de.wgkassel.curstle.enemy.Enemy2;
 import de.wgkassel.curstle.enemy.MainEnemy;
 import de.wgkassel.curstle.player.Player;

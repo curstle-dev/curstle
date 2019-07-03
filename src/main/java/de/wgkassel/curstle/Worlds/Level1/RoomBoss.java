@@ -1,8 +1,8 @@
 package de.wgkassel.curstle.Worlds.Level1;
 
 import de.wgkassel.curstle.RoomContent.MiniMap;
-import de.wgkassel.curstle.enemy.Boss;
-import de.wgkassel.curstle.enemy.BossBar;
+import de.wgkassel.curstle.enemy.Boss1.Boss;
+import de.wgkassel.curstle.enemy.Boss1.BossBar;
 import de.wgkassel.curstle.gates.BaseGate;
 import de.wgkassel.curstle.gates.BossToOneGate;
 import de.wgkassel.curstle.gates.StairsRoomGate;

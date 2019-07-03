@@ -1,6 +1,10 @@
 package de.wgkassel.curstle.player;
 
-import de.wgkassel.curstle.enemy.*;
+import de.wgkassel.curstle.enemy.Boss1.Boss;
+import de.wgkassel.curstle.enemy.Boss1.BossImage;
+import de.wgkassel.curstle.enemy.Boss1.WeaponOfTheBoss;
+import de.wgkassel.curstle.enemy.Endboss.Endboss;
+import de.wgkassel.curstle.enemy.Endboss.EndbossImage;
 import greenfoot.Actor;
 import greenfoot.Greenfoot;
 

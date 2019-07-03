@@ -1,4 +1,4 @@
-package de.wgkassel.curstle.enemy;
+package de.wgkassel.curstle.enemy.Endboss;
 
 import de.wgkassel.curstle.RoomContent.WoodWall;
 import de.wgkassel.curstle.Worlds.Screens.VictoryScreen;

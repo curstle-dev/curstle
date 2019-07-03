@@ -1,7 +1,7 @@
 package de.wgkassel.curstle.Worlds.Screens;
 
-import de.wgkassel.curstle.enemy.Boss;
-import de.wgkassel.curstle.enemy.Endboss;
+import de.wgkassel.curstle.enemy.Boss1.Boss;
+import de.wgkassel.curstle.enemy.Endboss.Endboss;
 import de.wgkassel.curstle.gates.BaseGate;
 import de.wgkassel.curstle.player.Player;
 import greenfoot.Actor;

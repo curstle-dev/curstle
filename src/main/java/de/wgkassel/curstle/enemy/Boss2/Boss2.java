@@ -1,6 +1,8 @@
-package de.wgkassel.curstle.enemy;
+package de.wgkassel.curstle.enemy.Boss2;
 
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
+import de.wgkassel.curstle.enemy.Endboss.EndbossWeapon;
+import de.wgkassel.curstle.enemy.Enemy2;
 import de.wgkassel.curstle.player.Player;
 import greenfoot.Actor;
 import greenfoot.Greenfoot;
@@ -13,11 +15,11 @@ public class Boss2 extends Actor {
     private int countAim = 0;
     private int countAround = 0;
     State state = State.SPAWN;
-    PreviousState previousState = PreviousState.SPAWN;
+    LastState lastState = LastState.SPAWN;
 
-    enum PreviousState {AIM, AROUND, SPAWN, PAUSE;}
+    enum State {AIM, AROUND, SPAWN, PAUSE, NOTHING;}
 
-    enum State {AIM, AROUND, SPAWN, PAUSE;}
+    enum LastState {AIM, AROUND, SPAWN, PAUSE;}
 
 
     public Boss2() {
@@ -47,6 +49,8 @@ public class Boss2 extends Actor {
             case SPAWN:
                 spawnEnemy();
                 break;
+            case NOTHING:
+                pause();
 
         }
 
@@ -69,8 +73,9 @@ public class Boss2 extends Actor {
 
         } else if (countAim >= 6) {
             countAim = 0;
+            lastState = LastState.AIM;
+            pause = System.currentTimeMillis();
             pause();
-            state = State.AROUND;
         }
     }
 
@@ -83,10 +88,10 @@ public class Boss2 extends Actor {
                 x = x + 24;
             }
             countAround++;
-        }
-        else if(countAround >= 6){
+        } else if (countAround >= 6) {
+            lastState = LastState.AROUND;
+            pause = System.currentTimeMillis();
             pause();
-            state = State.SPAWN;
         }
     }
 
@@ -99,13 +104,17 @@ public class Boss2 extends Actor {
     }
 
     public void spawnEnemy() {
-        pause();
+
         for (int i = 0; i < 3; i++) {
-            Bug bug = new Bug();
-            getWorld().addObject(bug, getRandomX(), getRandomY());
+            Enemy2 enemy2 = new Enemy2();
+            getWorld().addObject(enemy2, getRandomX(), getRandomY());
         }
+
+        pause = System.currentTimeMillis();
+        lastState = LastState.SPAWN;
         state = State.PAUSE;
     }
+
 
     /**
      * creates a random X coordinate thats not in the player or near him
@@ -138,13 +147,32 @@ public class Boss2 extends Actor {
     }
 
     public void pause() {
+        state = State.NOTHING;
         if (System.currentTimeMillis() - pause > 3000) {
+            switch (lastState) {
+                case SPAWN:
+                default:
+                    state = State.PAUSE;
+                    break;
+                case PAUSE:
+                    state = State.AIM;
+                    break;
+                case AIM:
+                    state = State.AROUND;
+                    break;
+                case AROUND:
+                    state = State.SPAWN;
+                    break;
+
+            }
+
         }
     }
 
-    public void longPause(){
+    public void longPause() {
         if (System.currentTimeMillis() - pause > 10000) {
-            state = State.AIM;
+            lastState = LastState.PAUSE;
+            pause();
         }
     }
 }

@@ -1,5 +1,6 @@
-package de.wgkassel.curstle.enemy;
+package de.wgkassel.curstle.enemy.Endboss;
 
+import de.wgkassel.curstle.enemy.Endboss.Endboss;
 import greenfoot.Actor;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;

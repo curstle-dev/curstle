@@ -6,7 +6,7 @@ class.de.wgkassel.curstle.Worlds.Screens.StartScreen.image=StartScreen.png
 class.de.wgkassel.curstle.Worlds.Level1.RoomOne.image=world.png
 class.de.wgkassel.curstle.Button.image=actor.png
 class.de.wgkassel.curstle.enemy.Bug.image=enemy.png
-class.de.wgkassel.curstle.enemy.Endboss.image=krasser_enemy.png
+class.de.wgkassel.curstle.enemy.Endboss.Endboss.image=krasser_enemy.png
 class.de.wgkassel.curstle.enemy.Enemy2.image=bee2.png
 class.de.wgkassel.curstle.enemy.BeeBullet.image=beeBullet2.png
 
@@ -34,21 +34,21 @@ class.de.wgkassel.curstle.Worlds.Level2.RoomBoss2.image=wood_floor.png
 class.de.wgkassel.curstle.items.Ring.image=ring.png
 
 
-class.de.wgkassel.curstle.enemy.EndbossImage.image=Endboss.png
+class.de.wgkassel.curstle.enemy.Endboss.EndbossImage.image=Endboss.png
 class.de.wgkassel.curstle.RoomOne.image=stone_floor.png
 class.de.wgkassel.curstle.RoomBoss.image=stone_floor.png
 class.de.wgkassel.curstle.RoomTwo.image=stone_floor.png
 class.de.wgkassel.curstle.RoomThree.image=stone_floor.png
 class.de.wgkassel.curstle.Wall.image=stone_wall.png
-class.de.wgkassel.curstle.Worlds.StairsRoom.image=wood_floor.png
+class.de.wgkassel.curstle.Worlds.Level1.StairsRoom.image=wood_floor.png
 class.de.wgkassel.curstle.Shelf.image=Regal.png
 class.de.wgkassel.curstle.CornerWall.image=stone_wall_corner.png
 
-class.de.wgkassel.curstle.enemy.Boss.image=Boss.png
-class.de.wgkassel.curstle.enemy.WeaponOfTheBoss.image=Endboss_sword.png
+class.de.wgkassel.curstle.enemy.Boss1.Boss.image=Boss.png
+class.de.wgkassel.curstle.enemy.Boss1.WeaponOfTheBoss.image=Endboss_sword.png
 class.de.wgkassel.curstle.Exit.image=door.png
 class.de.wgkassel.curstle.Worlds.Screens.VictoryText.image=victory.png
-class.de.wgkassel.curstle.enemy.EndbossWeapon.image=weaponoftheboss.png
+class.de.wgkassel.curstle.enemy.Endboss.EndbossWeapon.image=weaponoftheboss.png
 class.de.wgkassel.curstle.Worlds.Screens.VictoryScreen.image=EndScreen.png
 class.de.wgkassel.curstle.Worlds.Screens.Endscreen.image=deathscreen.png
 
