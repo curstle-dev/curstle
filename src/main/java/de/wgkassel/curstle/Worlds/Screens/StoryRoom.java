@@ -37,7 +37,7 @@ public class StoryRoom extends BaseWorld {
     public void act() {
         if (Greenfoot.mouseClicked(cc)) {
             story++;
-            lastStory = story - 1;
+            Story.removeMe = story - 1;
         }
 
 
@@ -50,37 +50,30 @@ public class StoryRoom extends BaseWorld {
         if (story == 2) {
             Story story = new Story(2);
             addObject(story, 800, 500);
-            Story.removeMe = 1;
         }
         if (story == 3) {
             Story story = new Story(3);
             addObject(story, 800, 500);
-            Story.removeMe = 2;
         }
         if (story == 4) {
             Story story = new Story(4);
             addObject(story, 800, 500);
-            Story.removeMe = 3;
         }
         if (story == 5) {
             Story story = new Story(5);
             addObject(story, 800, 500);
-            Story.removeMe = 4;
         }
         if (story == 6) {
             Story story = new Story(6);
             addObject(story, 800, 500);
-            Story.removeMe = 5;
         }
         if (story == 7) {
             Story story = new Story(7);
             addObject(story, 800, 500);
-            Story.removeMe = 6;
         }
         if (story == 8) {
             Story story = new Story(8);
             addObject(story, 800, 500);
-            Story.removeMe = 7;
         }
     }
 }
