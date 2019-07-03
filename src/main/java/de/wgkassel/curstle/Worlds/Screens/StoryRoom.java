@@ -10,14 +10,12 @@ import greenfoot.Greenfoot;
 public class StoryRoom extends BaseWorld {
 
     int story = 1;
-    int lastStory;
     private ChangeCharacter cc;
 
     public StoryRoom(Player player) {
         super(player);
         prepare();
     }
-
 
     public void prepare() {
         addObject(player, getWidth() / 2, getHeight() / 10 * 9);
