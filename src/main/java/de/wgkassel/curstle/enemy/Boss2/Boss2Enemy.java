@@ -16,6 +16,10 @@ public class Boss2Enemy extends Actor {
     int lives = 4;
     boolean hit;
 
+    public Boss2Enemy() {
+        setImage("Boss2Enemy.png");
+        this.getImage().scale(140, 116);
+    }
 
     /**
      * act method for MainEnemy

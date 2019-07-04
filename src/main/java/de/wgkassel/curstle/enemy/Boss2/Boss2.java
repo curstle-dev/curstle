@@ -8,6 +8,8 @@ import greenfoot.Actor;
 import greenfoot.Greenfoot;
 
 public class Boss2 extends Actor {
+    public static int lives = 40;
+
     private boolean allowAttack = true;
     private long shotPause = System.currentTimeMillis();
     private long wait = System.currentTimeMillis();
@@ -32,6 +34,7 @@ public class Boss2 extends Actor {
     public void act() {
         super.act();
         attack();
+        die();
     }
 
     public void attack() {
@@ -98,10 +101,10 @@ public class Boss2 extends Actor {
     }
 
     public void generateBullet(int rotationOffset) {
-        EndbossWeapon endbossWeapon = new EndbossWeapon();
-        this.getWorld().addObject(endbossWeapon, this.getX() + 90, this.getY() + 10);
-        int rotation = endbossWeapon.getRotation();
-        endbossWeapon.setRotation(rotation + rotationOffset);
+        Boss2Bullet boss2Bullet = new Boss2Bullet();
+        this.getWorld().addObject(boss2Bullet, this.getX() + 90, this.getY() + 10);
+        int rotation = boss2Bullet.getRotation();
+        boss2Bullet.setRotation(rotation + rotationOffset);
         shotPause = System.currentTimeMillis();
     }
 
@@ -175,6 +178,11 @@ public class Boss2 extends Actor {
         if (System.currentTimeMillis() - pause > 10000) {
             lastState = LastState.PAUSE;
             pause();
+        }
+    }
+    public void die(){
+        if (lives <= 0){
+            getWorld().removeObject(this);
         }
     }
 }
