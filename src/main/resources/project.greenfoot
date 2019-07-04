@@ -11,16 +11,16 @@ class.de.wgkassel.curstle.enemy.Endboss.Endboss.image=krasser_enemy.png
 class.de.wgkassel.curstle.enemy.Enemy2.image=bee2.png
 class.de.wgkassel.curstle.enemy.BeeBullet.image=beeBullet2.png
 
-class.de.wgkassel.curstle.Worlds.Level1.RoomOne.image=stone_floor.png
-class.de.wgkassel.curstle.Worlds.Level1.RoomBoss.image=stone_floor.png
-class.de.wgkassel.curstle.Worlds.Level1.RoomTwo.image=stone_floor.png
-class.de.wgkassel.curstle.Worlds.Level1.RoomThree.image=stone_floor.png
-class.de.wgkassel.curstle.RoomContent.Wall.image=stone_wall.png
+class.de.wgkassel.curstle.Worlds.Level1.RoomOne.image=moss_floor.png
+class.de.wgkassel.curstle.Worlds.Level1.RoomBoss.image=moss_floor.png
+class.de.wgkassel.curstle.Worlds.Level1.RoomTwo.image=moss_floor.png
+class.de.wgkassel.curstle.Worlds.Level1.RoomThree.image=moss_floor.png
+class.de.wgkassel.curstle.RoomContent.Wall.image=moss_wall.png
 class.de.wgakssel.curstle.RoomContent.BrickWall.image=brickWall.png
 class.de.wgkassel.curstle.RoomContent.Shelf.image=Regal.png
-class.de.wgkassel.curstle.RoomContent.CornerWall.image=stone_wall_corner.png
+class.de.wgkassel.curstle.RoomContent.CornerWall.image=moss_wall_corner.png
 
-class.de.wgkassel.curstle.Worlds.Screens.StoryRoom.image=stone_floor.png
+class.de.wgkassel.curstle.Worlds.Screens.StoryRoom.image=moss_floor.png
 
 class.de.wgkassel.curstle.Treasure.image=treasure.png
 class.de.wgkassel.curstle.Treasure.image=treasure_hover.png
