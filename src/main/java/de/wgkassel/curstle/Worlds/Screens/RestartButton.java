@@ -1,6 +1,7 @@
 package de.wgkassel.curstle.Worlds.Screens;
 
 import de.wgkassel.curstle.enemy.Boss1.Boss;
+import de.wgkassel.curstle.enemy.Boss2.Boss2;
 import de.wgkassel.curstle.enemy.Endboss.Endboss;
 import de.wgkassel.curstle.gates.BaseGate;
 import de.wgkassel.curstle.player.Player;
@@ -25,6 +26,7 @@ public class RestartButton extends Actor {
             Player.lives = 10;
             Boss.lives = 30;
             Endboss.live = 50;
+            Boss2.lives = 40;
             StartScreen.shouldStart = false;
             BaseGate.twoToOne = false;
             BaseGate.bossToOne = false;

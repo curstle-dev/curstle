@@ -10,6 +10,4 @@ public class Door extends SilentObjects {
     public void act() {
         super.act();
     }
-
-/**henrik liebt pimmel*/
 }

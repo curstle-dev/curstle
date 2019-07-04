@@ -69,6 +69,8 @@ public class Knight extends Player {
             Sword.allowBossHit = true;
             Sword.allowEndbossHit = true;
             Sword.allowHitEnemy2 = true;
+            Sword.allowHitBoss2Enemy = true;
+            Sword.allowHitBoss2 = true;
 
 
         }

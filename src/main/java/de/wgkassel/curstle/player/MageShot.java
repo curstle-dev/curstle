@@ -3,6 +3,7 @@ package de.wgkassel.curstle.player;
 import de.wgkassel.curstle.enemy.Boss1.Boss;
 import de.wgkassel.curstle.enemy.Boss1.BossImage;
 import de.wgkassel.curstle.enemy.Boss1.WeaponOfTheBoss;
+import de.wgkassel.curstle.enemy.Boss2.Boss2;
 import de.wgkassel.curstle.enemy.Endboss.Endboss;
 import de.wgkassel.curstle.enemy.Endboss.EndbossImage;
 import greenfoot.Actor;
@@ -29,6 +30,11 @@ public class MageShot extends Actor {
         } else if (isTouching(BossImage.class)) {
             Boss.lives--;
             Boss.lives--;
+            Greenfoot.playSound("hit.wav");
+            getWorld().removeObject(this);
+        } else if (isTouching(Boss2.class)) {
+            Boss2.lives--;
+            Boss2.lives--;
             Greenfoot.playSound("hit.wav");
             getWorld().removeObject(this);
         } else if (isAtEdge()) {

@@ -8,6 +8,11 @@ public class Boss2FollowBullet extends Actor {
 
     boolean allowFollow = true;
 
+    public Boss2FollowBullet() {
+        setImage("Horn2.png");
+        this.getImage().scale(146, 100);
+    }
+
     @Override
     public void act() {
         super.act();

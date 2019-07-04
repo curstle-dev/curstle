@@ -10,6 +10,10 @@ import de.wgkassel.curstle.Worlds.Level2.*;
 import de.wgkassel.curstle.enemy.*;
 import de.wgkassel.curstle.enemy.Boss1.Boss;
 import de.wgkassel.curstle.enemy.Boss1.WeaponOfTheBoss;
+import de.wgkassel.curstle.enemy.Boss2.Boss2;
+import de.wgkassel.curstle.enemy.Boss2.Boss2Bullet;
+import de.wgkassel.curstle.enemy.Boss2.Boss2Enemy;
+import de.wgkassel.curstle.enemy.Boss2.Boss2FollowBullet;
 import de.wgkassel.curstle.enemy.Endboss.Endboss;
 import de.wgkassel.curstle.enemy.Endboss.EndbossWeapon;
 import de.wgkassel.curstle.enemy.Endboss.MegaWeapon;
@@ -33,7 +37,10 @@ public abstract class Player extends Actor {
     private boolean allowHitEndBossShots = true;
     private boolean allowHitMegaWeapon = true;
     private boolean allowHitBeeBullet;
-    private boolean allowHitBee;
+    private boolean allowHitBee = true;
+    private boolean allowHitBoss2Enemy = true;
+    private boolean allowHitBoss2Bullet = true;
+    private boolean allowHitBoss2FollowBullet = true;
 
     public static int lives = 10;
     private double multiplier = DEFAULT_MULTIPLIER;
@@ -149,11 +156,12 @@ public abstract class Player extends Actor {
         checkHits();
 
         if (canMove()) {
-            if (!isTouching(Shelf.class) && !isTouching(DecoKnight.class)) {
+            if (!isTouching(Shelf.class) && !isTouching(DecoKnight.class) && !isTouching(Boss2.class)) {
                 lastX = getX();
                 lastY = getY();
             }
             knights();
+            boss2();
             shelves();
             accelMove();
             brakeMove();
@@ -175,6 +183,9 @@ public abstract class Player extends Actor {
         checkHitBee();
         checkHitBeeBullet();
         //checkHitEndBoss();
+        checkHitBoss2Enemy();
+        checkHitBoss2Bullet();
+        checkHitBoss2FollowBullet();
     }
 
     private void accelMove() {
@@ -223,6 +234,39 @@ public abstract class Player extends Actor {
             allowHit = false;
         } else if (getIntersectingObjects(MainEnemy.class).isEmpty()) {
             allowHit = true;
+        }
+    }
+
+    public void checkHitBoss2Enemy() {
+        if (!getIntersectingObjects(Boss2Enemy.class).isEmpty() && allowHitBoss2Enemy) {
+            decreaseHealth();
+            allowHitBoss2Enemy = false;
+        } else if (getIntersectingObjects(Boss2Enemy.class).isEmpty()) {
+            allowHitBoss2Enemy = true;
+        }
+    }
+
+    public void checkHitBoss2Bullet() {
+        List<Boss2Bullet> weaponList = getIntersectingObjects(Boss2Bullet.class);
+        if (!weaponList.isEmpty() && allowHitBoss2Bullet) {
+            decreaseHealth();
+            weaponList.forEach(w -> getWorld().removeObject(w));
+            allowHitBoss2Bullet = false;
+
+        } else if (weaponList.isEmpty()) {
+            allowHitBoss2Bullet = true;
+        }
+    }
+
+    public void checkHitBoss2FollowBullet() {
+        List<Boss2FollowBullet> weaponList = getIntersectingObjects(Boss2FollowBullet.class);
+        if (!weaponList.isEmpty() && allowHitBoss2FollowBullet) {
+            decreaseHealth();
+            weaponList.forEach(w -> getWorld().removeObject(w));
+            allowHitBoss2FollowBullet = false;
+
+        } else if (weaponList.isEmpty()) {
+            allowHitBoss2FollowBullet = true;
         }
     }
 
@@ -476,7 +520,13 @@ public abstract class Player extends Actor {
         }
     }
 
+    public void boss2() {
+        if (isTouching(Boss2.class)) {
+            this.setLocation(lastX, lastY);
+            return;
+        }
 
+    }
 }
 
 
