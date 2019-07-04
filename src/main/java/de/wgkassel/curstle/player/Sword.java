@@ -4,6 +4,7 @@ import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
 import de.wgkassel.curstle.enemy.*;
 import de.wgkassel.curstle.enemy.Boss1.Boss;
 import de.wgkassel.curstle.enemy.Boss1.BossImage;
+import de.wgkassel.curstle.enemy.Boss2.Boss2Enemy;
 import de.wgkassel.curstle.enemy.Endboss.Endboss;
 import de.wgkassel.curstle.enemy.Endboss.EndbossImage;
 import greenfoot.Actor;
@@ -14,6 +15,7 @@ import java.util.List;
 public class Sword extends Actor {
 
     static boolean allowHit = true;
+    static boolean allowHitBoss2Enemy = true;
     static boolean allowBossHit = true;
     static boolean allowEndbossHit = true;
     private int swordRange = 190;
@@ -34,6 +36,7 @@ public class Sword extends Actor {
         checkEndboss();
         followPlayer();
         resetAllowHits();
+        checkBoss2Enemy();
 
     }
 
@@ -64,6 +67,20 @@ public class Sword extends Actor {
         }
     }
 
+    /**
+     * checks if there is a Bug
+     */
+    public void checkBoss2Enemy() {
+        List<Boss2Enemy> intersectingObjects = getObjectsInRange(swordRange, Boss2Enemy.class);
+        if (allowHitBoss2Enemy) {
+            if (intersectingObjects != null) {
+                intersectingObjects.forEach(Boss2Enemy::lowerHealth);
+                allowHitBoss2Enemy = false;
+            }
+        } else if (intersectingObjects == null) {
+            allowHitBoss2Enemy = true;
+        }
+    }
 
     /**
      * checks if there is a BEEEEEEEE

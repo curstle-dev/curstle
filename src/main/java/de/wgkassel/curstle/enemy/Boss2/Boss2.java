@@ -23,7 +23,9 @@ public class Boss2 extends Actor {
 
 
     public Boss2() {
-        setImage("placeholder_enemy.png");
+        setImage("Boss2.png");
+        this.getImage().scale(280, 232);
+
     }
 
     @Override
@@ -106,8 +108,8 @@ public class Boss2 extends Actor {
     public void spawnEnemy() {
 
         for (int i = 0; i < 3; i++) {
-            Enemy2 enemy2 = new Enemy2();
-            getWorld().addObject(enemy2, getRandomX(), getRandomY());
+            Boss2Enemy boss2Enemy = new Boss2Enemy();
+            getWorld().addObject(boss2Enemy, getRandomX(), getRandomY());
         }
 
         pause = System.currentTimeMillis();

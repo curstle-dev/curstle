@@ -3,6 +3,7 @@ package de.wgkassel.curstle.Worlds;
 import de.wgkassel.curstle.MysteriousMan;
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
 import de.wgkassel.curstle.enemy.Boss2.Boss2;
+import de.wgkassel.curstle.player.Hearts;
 import de.wgkassel.curstle.player.Player;
 
 public class TestRoom extends BaseWorld {
@@ -18,5 +19,8 @@ public class TestRoom extends BaseWorld {
 
         MysteriousMan mysteriousMan = new MysteriousMan();
         addObject(mysteriousMan, 500,500);
+
+        Hearts hearts = new Hearts();
+        addObject(hearts, 1300, 35);
     }
 }

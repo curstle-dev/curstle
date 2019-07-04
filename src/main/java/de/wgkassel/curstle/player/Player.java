@@ -10,6 +10,7 @@ import de.wgkassel.curstle.Worlds.Level2.*;
 import de.wgkassel.curstle.enemy.*;
 import de.wgkassel.curstle.enemy.Boss1.Boss;
 import de.wgkassel.curstle.enemy.Boss1.WeaponOfTheBoss;
+import de.wgkassel.curstle.enemy.Boss2.Boss2Enemy;
 import de.wgkassel.curstle.enemy.Endboss.Endboss;
 import de.wgkassel.curstle.enemy.Endboss.EndbossWeapon;
 import de.wgkassel.curstle.enemy.Endboss.MegaWeapon;
@@ -222,6 +223,15 @@ public abstract class Player extends Actor {
             decreaseHealth();
             allowHit = false;
         } else if (getIntersectingObjects(MainEnemy.class).isEmpty()) {
+            allowHit = true;
+        }
+    }
+
+    public void checkHitBoss2Enemy() {
+        if (!getIntersectingObjects(Boss2Enemy.class).isEmpty() && allowHit) {
+            decreaseHealth();
+            allowHit = false;
+        } else if (getIntersectingObjects(Boss2Enemy.class).isEmpty()) {
             allowHit = true;
         }
     }
