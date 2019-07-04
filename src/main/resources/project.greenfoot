@@ -3,6 +3,7 @@
 # Class definitions
 class.de.wgkassel.curstle.RoomContent.Door.image=door_placeholder.png
 class.de.wgkassel.curstle.Worlds.Screens.StartScreen.image=StartScreen.png
+class.de.wgkassel.curstle.Worlds.Screens.StartScreen2.image=StartScreen.png
 class.de.wgkassel.curstle.Worlds.Level1.RoomOne.image=world.png
 class.de.wgkassel.curstle.Button.image=actor.png
 class.de.wgkassel.curstle.enemy.Bug.image=enemy.png
@@ -18,6 +19,8 @@ class.de.wgkassel.curstle.RoomContent.Wall.image=stone_wall.png
 class.de.wgakssel.curstle.RoomContent.BrickWall.image=brickWall.png
 class.de.wgkassel.curstle.RoomContent.Shelf.image=Regal.png
 class.de.wgkassel.curstle.RoomContent.CornerWall.image=stone_wall_corner.png
+
+class.de.wgkassel.curstle.Worlds.Screens.StoryRoom.image=stone_floor.png
 
 class.de.wgkassel.curstle.Treasure.image=treasure.png
 class.de.wgkassel.curstle.Treasure.image=treasure_hover.png
