@@ -1,6 +1,7 @@
 package de.wgkassel.curstle.Worlds.Screens;
 
 import de.wgkassel.curstle.Music;
+import de.wgkassel.curstle.MysteriousMan;
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
 import de.wgkassel.curstle.gates.MainGate;
 import de.wgkassel.curstle.player.Knight;
@@ -82,6 +83,9 @@ public class StartScreen extends BaseWorld {
         addObject(ct, getWidth() / 2, getHeight() / 4);
 
         addObject(player, getWidth() / 2, getHeight() / 10 * 9);
+
+        MysteriousMan mysteriousMan = new MysteriousMan();
+        addObject(mysteriousMan, getWidth()/2, getHeight()/2 + 160);
 
         cc = new ChangeCharacter(); //Used to change the character
 
