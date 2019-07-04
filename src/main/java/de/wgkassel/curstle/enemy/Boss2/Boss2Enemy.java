@@ -15,6 +15,9 @@ public class Boss2Enemy extends Actor {
     boolean deBounce = false;
     int lives = 4;
     boolean hit;
+    public Boss2Enemy(){
+        setImage("Guard.png");
+    }
 
     public Boss2Enemy() {
         setImage("Boss2Enemy.png");
