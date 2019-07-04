@@ -1,6 +1,7 @@
 package de.wgkassel.curstle.Worlds;
 
 import de.wgkassel.curstle.MysteriousMan;
+import de.wgkassel.curstle.Torch;
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
 import de.wgkassel.curstle.enemy.Boss2.Boss2;
 import de.wgkassel.curstle.enemy.Boss2.Boss2Bar;
@@ -14,8 +15,7 @@ public class TestRoom extends BaseWorld {
     }
 
     public void prepare() {
-        Boss2 boss2 = new Boss2();
-        addObject(boss2, this.getWidth() / 2, this.getHeight() / 2);
+
         addObject(player, getWidth() / 2, getHeight() / 10 * 9);
 
         MysteriousMan mysteriousMan = new MysteriousMan();
@@ -24,9 +24,8 @@ public class TestRoom extends BaseWorld {
         Hearts hearts = new Hearts();
         addObject(hearts, 1300, 35);
 
-        if (Boss2.lives > 0) {
-            Boss2Bar boss2Bar = new Boss2Bar();
-            addObject(boss2Bar, 850, 150);
-        }
+
+        Torch torch = new Torch();
+        addObject(torch, getWidth()/3, getHeight()/3);
     }
 }
