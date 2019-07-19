@@ -4,17 +4,21 @@ import greenfoot.Actor;
 
 public class ShotgunShot extends Actor {
     private long counter;
-    public ShotgunShot(){
+
+    int speed;
+
+    public ShotgunShot(int x) {
         counter = System.currentTimeMillis();
+        speed = x;
     }
+
     @Override
     public void act() {
         super.act();
-        move(6);
+        move(speed);
         if (isAtEdge()) {
             getWorld().removeObject(this);
-        }
-        else if (System.currentTimeMillis() - counter > 700){
+        } else if (System.currentTimeMillis() - counter > 700) {
             getWorld().removeObject(this);
         }
     }

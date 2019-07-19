@@ -1,7 +1,6 @@
 package de.wgkassel.curstle.enemy;
 
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
-import de.wgkassel.curstle.enemy.Endboss.EndbossWeapon;
 import de.wgkassel.curstle.player.Player;
 
 public class ShotgunMan extends BaseEnemy {
@@ -36,10 +35,21 @@ public class ShotgunMan extends BaseEnemy {
 
     public void shoot(){
         int x = 0;
+        int y;
         if (System.currentTimeMillis() - shotPause > 2000) {
             for (int i = 0; i <= 4; i++) {
-                doShoot(x);
+                if(i == 2){
+                    y = 7;
+                }
+                else if (i == 1 || i == 3){
+                    y = 7;
+                }
+                else {
+                    y = 6;
+                }
+                doShoot(x,y);
                 x = x + 8;
+
             }
         }
     }
@@ -49,11 +59,11 @@ public class ShotgunMan extends BaseEnemy {
      *
      * @param rotationOffset
      */
-    public void doShoot(int rotationOffset) {
-        ShotgunShot shotgunShot = new ShotgunShot();
+    public void doShoot(int rotationOffset, int speed) {
+        ShotgunShot shotgunShot = new ShotgunShot(speed);
         this.getWorld().addObject(shotgunShot, this.getX(), this.getY());
-        int rotation = this.getRotation() - 20;
-        shotgunShot.setRotation(rotation + rotationOffset);
+        int rotation = this.getRotation();
+        shotgunShot.setRotation(rotation - 16 + rotationOffset);
         shotPause = System.currentTimeMillis();
     }
 }
