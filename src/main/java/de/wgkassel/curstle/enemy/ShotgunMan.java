@@ -3,6 +3,8 @@ package de.wgkassel.curstle.enemy;
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
 import de.wgkassel.curstle.player.Player;
 
+import java.util.List;
+
 public class ShotgunMan extends BaseEnemy {
     int lives = 5;
     private long shotPause = System.currentTimeMillis();
@@ -19,6 +21,7 @@ public class ShotgunMan extends BaseEnemy {
     @Override
     public void act() {
         super.act();
+        handleStateUpdates();
         switch (state) {
             case WALK:
                 walkRandomly();
@@ -30,6 +33,16 @@ public class ShotgunMan extends BaseEnemy {
                 turnTowards(playerX, playerY);
                 shoot();
                 break;
+        }
+    }
+
+    private void handleStateUpdates() {
+        List<Player> players = getObjectsInRange(400, Player.class);
+        int nPlayers = players.size();
+        if (nPlayers >= 1) {
+            state = State.ATTACK;
+        } else {
+            state = State.WALK;
         }
     }
 
