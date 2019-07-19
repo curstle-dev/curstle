@@ -1,7 +1,7 @@
-package de.wgkassel.curstle.Worlds.Screens;
+package de.wgkassel.curstle.Worlds.StartScreen;
 
 import de.wgkassel.curstle.Music;
-import de.wgkassel.curstle.MysteriousMan;
+import de.wgkassel.curstle.Worlds.Level1.MysteriousMan;
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
 import de.wgkassel.curstle.gates.MainGate;
 import de.wgkassel.curstle.player.Knight;

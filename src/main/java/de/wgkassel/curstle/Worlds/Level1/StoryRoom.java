@@ -1,9 +1,8 @@
-package de.wgkassel.curstle.Worlds.Screens;
+package de.wgkassel.curstle.Worlds.Level1;
 
-import de.wgkassel.curstle.MysteriousMan;
-import de.wgkassel.curstle.Speechbubble;
-import de.wgkassel.curstle.Story;
-import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
+import de.wgkassel.curstle.Torch;
+import de.wgkassel.curstle.Worlds.StartScreen.ChangeCharacter;
+import de.wgkassel.curstle.Worlds.StartScreen.StartScreen2;
 import de.wgkassel.curstle.player.Player;
 import greenfoot.Greenfoot;
 
@@ -35,6 +34,18 @@ public class StoryRoom extends BaseWorld {
         addObject(cc, 840, 400);
 
         generateWalls();
+
+        Torch torch = new Torch();
+        addObject(torch, getWidth() / 8, getHeight() / 8);
+
+        Torch torch1 = new Torch();
+        addObject(torch1, getWidth() / 8 + 1300, getHeight() / 8);
+
+        Torch torch2 = new Torch();
+        addObject(torch2, getWidth() / 8 + 1300, getHeight() / 8 + 700);
+
+        Torch torch3 = new Torch();
+        addObject(torch3, getWidth() / 8, getHeight() / 8 + 700);
 
     }
 

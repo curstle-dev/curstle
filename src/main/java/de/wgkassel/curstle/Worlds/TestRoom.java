@@ -1,10 +1,7 @@
 package de.wgkassel.curstle.Worlds;
 
-import de.wgkassel.curstle.MysteriousMan;
 import de.wgkassel.curstle.Torch;
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
-import de.wgkassel.curstle.enemy.Boss2.Boss2;
-import de.wgkassel.curstle.enemy.Boss2.Boss2Bar;
 import de.wgkassel.curstle.enemy.ShotgunMan;
 import de.wgkassel.curstle.player.Hearts;
 import de.wgkassel.curstle.player.Player;

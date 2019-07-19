@@ -1,4 +1,4 @@
-package de.wgkassel.curstle.Worlds.Screens;
+package de.wgkassel.curstle.Worlds.OptionsScreen;
 
 import greenfoot.Actor;
 

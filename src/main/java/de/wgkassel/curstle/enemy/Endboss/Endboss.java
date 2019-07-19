@@ -1,7 +1,7 @@
 package de.wgkassel.curstle.enemy.Endboss;
 
 import de.wgkassel.curstle.RoomContent.WoodWall;
-import de.wgkassel.curstle.Worlds.Screens.VictoryScreen;
+import de.wgkassel.curstle.Worlds.VictoryScreen.VictoryScreen;
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
 import de.wgkassel.curstle.player.Player;
 import greenfoot.Actor;

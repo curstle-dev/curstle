@@ -1,7 +1,8 @@
-package de.wgkassel.curstle.Worlds.Screens;
+package de.wgkassel.curstle.Worlds.VictoryScreen;
 
 import de.wgkassel.curstle.Music;
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
+import de.wgkassel.curstle.Worlds.EndScreen.RestartButton;
 import de.wgkassel.curstle.player.Player;
 
 

@@ -1,7 +1,5 @@
-package de.wgkassel.curstle;
+package de.wgkassel.curstle.Worlds.Level1;
 
-import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
-import de.wgkassel.curstle.Worlds.Screens.StoryRoom;
 import de.wgkassel.curstle.player.Player;
 import greenfoot.Actor;
 import greenfoot.Greenfoot;

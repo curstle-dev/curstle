@@ -16,19 +16,19 @@ public class Torch extends Actor {
         switch (counter) {
             case 1:
                 setImage("torch1.gif");
-                this.getImage().scale(100, 280);
+                this.getImage().scale(50, 140);
                 break;
             case 2:
                 setImage("torch2.gif");
-                this.getImage().scale(100, 280);
+                this.getImage().scale(50, 140);
                 break;
             case 3:
                 setImage("torch3.gif");
-                this.getImage().scale(100, 280);
+                this.getImage().scale(50, 140);
                 break;
             case 4:
                 setImage("torch4.gif");
-                this.getImage().scale(100, 280);
+                this.getImage().scale(50, 140);
                 break;
         }
     }

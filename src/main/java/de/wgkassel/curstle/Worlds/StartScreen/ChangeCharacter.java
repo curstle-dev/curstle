@@ -1,4 +1,4 @@
-package de.wgkassel.curstle.Worlds.Screens;
+package de.wgkassel.curstle.Worlds.StartScreen;
 
 import de.wgkassel.curstle.RoomContent.SilentObjects;
 import greenfoot.GreenfootImage;

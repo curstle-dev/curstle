@@ -1,4 +1,4 @@
-package de.wgkassel.curstle;
+package de.wgkassel.curstle.Worlds.Level1;
 
 import greenfoot.Actor;
 

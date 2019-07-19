@@ -1,6 +1,6 @@
-package de.wgkassel.curstle.Worlds.Screens;
+package de.wgkassel.curstle.Worlds.VictoryScreen;
 
-import de.wgkassel.curstle.Worlds.Screens.SylvesterBullet;
+import de.wgkassel.curstle.Worlds.VictoryScreen.SylvesterBullet;
 import greenfoot.Actor;
 import greenfoot.Greenfoot;
 

@@ -1,5 +1,6 @@
-package de.wgkassel.curstle.Worlds.Screens;
+package de.wgkassel.curstle.Worlds.EndScreen;
 
+import de.wgkassel.curstle.Worlds.StartScreen.StartScreen;
 import de.wgkassel.curstle.enemy.Boss1.Boss;
 import de.wgkassel.curstle.enemy.Boss2.Boss2;
 import de.wgkassel.curstle.enemy.Endboss.Endboss;
