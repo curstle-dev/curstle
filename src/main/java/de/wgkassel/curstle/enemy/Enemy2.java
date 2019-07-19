@@ -1,7 +1,5 @@
 package de.wgkassel.curstle.enemy;
 
-import de.wgkassel.curstle.RoomContent.Shelf;
-import de.wgkassel.curstle.RoomContent.Wall;
 import de.wgkassel.curstle.player.MageShot;
 import de.wgkassel.curstle.player.Player;
 import greenfoot.Greenfoot;
@@ -33,7 +31,7 @@ public class Enemy2 extends BaseEnemy {
 
         switch (state) {
             case WALK:
-                walk();
+                walkRandomly();
                 break;
             case ATTACK:
                 attackThePlayer();
@@ -70,25 +68,6 @@ public class Enemy2 extends BaseEnemy {
         }
     }
 
-    /**
-     * walks randomly around
-     */
-    public void walk() {
-        move(3);
-
-        if (Greenfoot.getRandomNumber(100) > 96) {
-            int random = Greenfoot.getRandomNumber(360);
-            turn(random);
-        }
-        if (isTouching(Wall.class)) {
-            turn(180);
-            move(10);
-        }
-        if (isTouching(Shelf.class)) {
-            turn(180);
-            move(10);
-        }
-    }
 
     /**
      * check if the Bee can shoot
