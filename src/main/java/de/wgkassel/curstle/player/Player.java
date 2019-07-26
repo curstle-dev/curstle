@@ -43,7 +43,7 @@ public abstract class Player extends Actor {
     private boolean allowHitBoss2FollowBullet = true;
     private boolean allowHitShotGunShot = true;
 
-    private String checkHit;
+    private Class checkHit;
 
     public static int lives = 10;
     private double multiplier = DEFAULT_MULTIPLIER;
@@ -178,19 +178,50 @@ public abstract class Player extends Actor {
      * uses combines all checkHit Methods
      */
     public void checkHits() {
-        checkHitBossShots();
-        checkHitEnemy();
-        checkHitBoss();
-        checkHitEndBossShots();
-        checkHitMegaWeapon();
-        checkHitBee();
-        checkHitBeeBullet();
-        //checkHitEndBoss();
-        checkHitBoss2Enemy();
-        checkHitBoss2Bullet();
-        checkHitBoss2FollowBullet();
-        checkHitShotgunShot();
+        for (int i = 0; i < 10; i++) {
+            switch (i) {
+                case 1:
+                    checkHit = MainEnemy.class;
+                    break;
+                case 2:
+                    checkHit = Boss.class;
+                    break;
+                case 3:
+                    checkHit = Enemy2.class;
+                    break;
+                case 4:
+                    checkHit = Boss2Enemy.class;
+                    break;
+            }
+            checkHitEnemy();
+        }
+/**
+        for (int i = 0; i < 10; i++) {
+            switch (i) {
+                case 1:
+                    checkHit = WeaponOfTheBoss.class;
+                    break;
+                case 2:
+                    checkHit = EndbossWeapon.class;
+                    break;
+                case 3:
+                    checkHit = MegaWeapon.class;
+                    break;
+                case 4:
+                    checkHit = BeeBullet.class;
+                    break;
+                case 5:
+                    checkHit = Boss2Bullet.class;
+                    break;
+                case 6:
+                    checkHit = Boss2FollowBullet.class;
+                    break;
+                case 7:
+                    checkHit = ShotgunShot.class;
+            }
+        }**/
     }
+
 
     private void accelMove() {
         mac++;
@@ -233,11 +264,8 @@ public abstract class Player extends Actor {
      * check Hits for any kind of damage
      */
     public void checkHitEnemy() {
-        if (!getIntersectingObjects(MainEnemy.class).isEmpty() && allowHit) {
+        if (!getIntersectingObjects(checkHit).isEmpty()) {
             decreaseHealth();
-            allowHit = false;
-        } else if (getIntersectingObjects(MainEnemy.class).isEmpty()) {
-            allowHit = true;
         }
     }
 
