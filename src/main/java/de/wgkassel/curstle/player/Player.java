@@ -41,6 +41,9 @@ public abstract class Player extends Actor {
     private boolean allowHitBoss2Enemy = true;
     private boolean allowHitBoss2Bullet = true;
     private boolean allowHitBoss2FollowBullet = true;
+    private boolean allowHitShotGunShot = true;
+
+    private String checkHit;
 
     public static int lives = 10;
     private double multiplier = DEFAULT_MULTIPLIER;
@@ -186,6 +189,7 @@ public abstract class Player extends Actor {
         checkHitBoss2Enemy();
         checkHitBoss2Bullet();
         checkHitBoss2FollowBullet();
+        checkHitShotgunShot();
     }
 
     private void accelMove() {
@@ -255,6 +259,18 @@ public abstract class Player extends Actor {
 
         } else if (weaponList.isEmpty()) {
             allowHitBoss2Bullet = true;
+        }
+    }
+
+    public void checkHitShotgunShot() {
+        List<ShotgunShot> weaponList = getIntersectingObjects(ShotgunShot.class);
+        if (!weaponList.isEmpty() && allowHitShotGunShot) {
+            decreaseHealth();
+            weaponList.forEach(w -> getWorld().removeObject(w));
+            allowHitShotGunShot = false;
+
+        } else if (weaponList.isEmpty()) {
+            allowHitShotGunShot = true;
         }
     }
 
