@@ -29,20 +29,7 @@ public abstract class Player extends Actor {
 
     public static final double DEFAULT_MULTIPLIER = 0.001;
 
-    //prevent the enemies from getting more than one dmg per hit
-    private boolean allowHit = true;
-    private boolean allowHitBoss = true;
-    private boolean allowHitBossShots = true;
-    private boolean allowHitEndBoss = true;
-    private boolean allowHitEndBossShots = true;
-    private boolean allowHitMegaWeapon = true;
-    private boolean allowHitBeeBullet;
-    private boolean allowHitBee = true;
-    private boolean allowHitBoss2Enemy = true;
-    private boolean allowHitBoss2Bullet = true;
-    private boolean allowHitBoss2FollowBullet = true;
-    private boolean allowHitShotGunShot = true;
-
+    private long time = System.currentTimeMillis();
     private Class checkHit;
 
     public static int lives = 10;
@@ -61,124 +48,33 @@ public abstract class Player extends Actor {
     private int wallSize = 145;
     private int lastX;
     private int lastY;
+    private Class touchingClass;
 
     private HashMap<Class<? extends BaseWorld>, HashMap<Class<? extends BaseEnemy>, Integer>> levelmap = new HashMap<>();
     private HashMap<Class<? extends BaseWorld>, HashMap<Class<? extends BaseItem>, Integer>> itemsMap = new HashMap<>();
 
 
     public Player() {
-        initEnemyMap(RoomOne.class, Bug.class, 4);
-        initEnemyMap(RoomOne.class, Enemy2.class, 4);
-
-
-        initEnemyMap(RoomTwo.class, Bug.class, 4);
-        initEnemyMap(RoomTwo.class, Enemy2.class, 4);
-
-        initEnemyMap(RoomThree.class, Bug.class, 4);
-        initEnemyMap(RoomThree.class, Enemy2.class, 4);
-
-        initItemMap(RoomOne.class, PotionRed.class, 1);
-        initEnemyMap(RoomOne2.class, Bug.class, 2);
-        initEnemyMap(RoomOne2.class, Enemy2.class, 2);
-
-        initEnemyMap(RoomTwo2.class, Bug.class, 1);
-        initEnemyMap(RoomTwo2.class, Enemy2.class, 3);
-
-        initEnemyMap(RoomThree2.class, Bug.class, 0);
-        initEnemyMap(RoomThree2.class, Enemy2.class, 4);
-
-        initEnemyMap(RoomFour2.class, Bug.class, 2);
-        initEnemyMap(RoomFour2.class, Enemy2.class, 2);
-
-        initEnemyMap(RoomFive2.class, Bug.class, 3);
-        initEnemyMap(RoomFive2.class, Enemy2.class, 1);
-
-        initEnemyMap(RoomSix2.class, Bug.class, 3);
-        initEnemyMap(RoomSix2.class, Enemy2.class, 3);
-
-        initItemMap(RoomOne.class, PotionRed.class, 1);
-        initItemMap(RoomBoss.class, PotionGreen.class, 1);
-        initItemMap(RoomBoss.class, PotionBlue.class, 1);
-        initItemMap(RoomThree.class, PotionPurple.class, 1);
-
-        initItemMap(RoomOne2.class, PotionRed.class, 1);
-        initItemMap(RoomTwo2.class, PotionBlue.class, 1);
-        initItemMap(RoomTwo2.class, PotionGreen.class, 1);
-        initItemMap(RoomThree2.class, PotionBlue.class, 1);
-        initItemMap(RoomFour2.class, PotionPurple.class, 1);
-        initItemMap(RoomFive2.class, PotionBlue.class, 1);
-        initItemMap(RoomFive2.class, PotionRed.class, 1);
-        initItemMap(RoomSix2.class, PotionGreen.class, 1);
-        initItemMap(RoomBoss2.class, PotionPurple.class, 1);
-        initItemMap(RoomBoss2.class, PotionBlue.class, 1);
-        initItemMap(RoomBoss2.class, PotionGreen.class, 1);
-
+        initEnemyMap();
     }
 
-    private void initItemMap(Class<? extends BaseWorld> worldClass, Class<? extends BaseItem> itemClass, int i) {
-
-        HashMap<Class<? extends BaseItem>, Integer> roomMap = itemsMap.get(worldClass);
-        if (roomMap == null) {
-            roomMap = new HashMap<>();
-        }
-        roomMap.put(itemClass, i);
-        itemsMap.put(worldClass, roomMap);
-    }
-
-    void initEnemyMap(Class<? extends BaseWorld> worldClass, Class<? extends BaseEnemy> enemyClass, Integer mainEnemyAmount) {
-        HashMap<Class<? extends BaseEnemy>, Integer> roomMap = levelmap.get(worldClass);
-        if (roomMap == null) {
-            roomMap = new HashMap<>();
-        }
-        roomMap.put(enemyClass, mainEnemyAmount);
-        levelmap.put(worldClass, roomMap);
-    }
-
-    public HashMap<Class<? extends BaseWorld>, HashMap<Class<? extends BaseEnemy>, Integer>> getLevelmap() {
-        return levelmap;
-    }
-
-    private ArrayList<BaseItem> itemsCollection = new ArrayList<>();
-
-    public ArrayList<BaseItem> getItemsCollection() {
-        return itemsCollection;
-    }
-
-    public HashMap<Class<? extends BaseWorld>, HashMap<Class<? extends BaseItem>, Integer>> getItemMap() {
-        return itemsMap;
-    }
 
     @Override
     public final void act() {
         super.act();
-        upPressed = Greenfoot.isKeyDown("w");
-        leftPressed = Greenfoot.isKeyDown("a");
-        downPressed = Greenfoot.isKeyDown("s");
-        rightPressed = Greenfoot.isKeyDown("d");
-
+        checkWASD();
         checkHits();
-
-        if (canMove()) {
-            if (!isTouching(Shelf.class) && !isTouching(DecoKnight.class) && !isTouching(Boss2.class)) {
-                lastX = getX();
-                lastY = getY();
-            }
-            knights();
-            boss2();
-            shelves();
-            accelMove();
-            brakeMove();
-            walk();
-        }
+        checkMove();
         doAct();
         cheat();
     }
 
+
     /**
-     * uses combines all checkHit Methods
+     * checks if anything can harm the player
      */
     public void checkHits() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 12; i++) {
             switch (i) {
                 case 1:
                     checkHit = MainEnemy.class;
@@ -192,24 +88,6 @@ public abstract class Player extends Actor {
                 case 4:
                     checkHit = Boss2Enemy.class;
                     break;
-            }
-            checkHitEnemy();
-        }
-/**
-        for (int i = 0; i < 10; i++) {
-            switch (i) {
-                case 1:
-                    checkHit = WeaponOfTheBoss.class;
-                    break;
-                case 2:
-                    checkHit = EndbossWeapon.class;
-                    break;
-                case 3:
-                    checkHit = MegaWeapon.class;
-                    break;
-                case 4:
-                    checkHit = BeeBullet.class;
-                    break;
                 case 5:
                     checkHit = Boss2Bullet.class;
                     break;
@@ -218,19 +96,31 @@ public abstract class Player extends Actor {
                     break;
                 case 7:
                     checkHit = ShotgunShot.class;
+                    break;
+                case 8:
+                    checkHit = WeaponOfTheBoss.class;
+                    break;
+                case 9:
+                    checkHit = EndbossWeapon.class;
+                    break;
+                case 10:
+                    checkHit = MegaWeapon.class;
+                    break;
+                case 11:
+                    checkHit = BeeBullet.class;
+                    break;
+
+
             }
-        }**/
-    }
-
-
-    private void accelMove() {
-        mac++;
-        if (mac >= 7 && multiplier <= 1 && (upPressed || downPressed || leftPressed || rightPressed)) {
-            multiplier = multiplier + 0.33;
-            mac = 0;
+            if (!getIntersectingObjects(checkHit).isEmpty()) {
+                if (System.currentTimeMillis() - time > 1000) {
+                    decreaseHealth();
+                    time = System.currentTimeMillis();
+                }
+            }
         }
-        multiplier = 1;
     }
+
 
     public abstract void doAct();
 
@@ -252,7 +142,7 @@ public abstract class Player extends Actor {
 
 
     /**
-     * PLayer dies
+     * Player dies
      */
     public void die() {
         Endscreen endscreen = new Endscreen(((BaseWorld) getWorld()).getPlayer());
@@ -261,143 +151,40 @@ public abstract class Player extends Actor {
 
 
     /**
-     * check Hits for any kind of damage
+     * Everything about moving
      */
-    public void checkHitEnemy() {
-        if (!getIntersectingObjects(checkHit).isEmpty()) {
-            decreaseHealth();
-        }
+    public void checkWASD() {
+        upPressed = Greenfoot.isKeyDown("w");
+        leftPressed = Greenfoot.isKeyDown("a");
+        downPressed = Greenfoot.isKeyDown("s");
+        rightPressed = Greenfoot.isKeyDown("d");
     }
 
-    public void checkHitBoss2Enemy() {
-        if (!getIntersectingObjects(Boss2Enemy.class).isEmpty() && allowHitBoss2Enemy) {
-            decreaseHealth();
-            allowHitBoss2Enemy = false;
-        } else if (getIntersectingObjects(Boss2Enemy.class).isEmpty()) {
-            allowHitBoss2Enemy = true;
+    public void checkMove() {
+        if (canMove()) {
+            if (!isTouching(Shelf.class) && !isTouching(DecoKnight.class) && !isTouching(Boss2.class)) {
+                lastX = getX();
+                lastY = getY();
+            }
+            touchObjects();
+            accelMove();
+            brakeMove();
+            walk();
         }
     }
-
-    public void checkHitBoss2Bullet() {
-        List<Boss2Bullet> weaponList = getIntersectingObjects(Boss2Bullet.class);
-        if (!weaponList.isEmpty() && allowHitBoss2Bullet) {
-            decreaseHealth();
-            weaponList.forEach(w -> getWorld().removeObject(w));
-            allowHitBoss2Bullet = false;
-
-        } else if (weaponList.isEmpty()) {
-            allowHitBoss2Bullet = true;
-        }
-    }
-
-    public void checkHitShotgunShot() {
-        List<ShotgunShot> weaponList = getIntersectingObjects(ShotgunShot.class);
-        if (!weaponList.isEmpty() && allowHitShotGunShot) {
-            decreaseHealth();
-            weaponList.forEach(w -> getWorld().removeObject(w));
-            allowHitShotGunShot = false;
-
-        } else if (weaponList.isEmpty()) {
-            allowHitShotGunShot = true;
-        }
-    }
-
-    public void checkHitBoss2FollowBullet() {
-        List<Boss2FollowBullet> weaponList = getIntersectingObjects(Boss2FollowBullet.class);
-        if (!weaponList.isEmpty() && allowHitBoss2FollowBullet) {
-            decreaseHealth();
-            weaponList.forEach(w -> getWorld().removeObject(w));
-            allowHitBoss2FollowBullet = false;
-
-        } else if (weaponList.isEmpty()) {
-            allowHitBoss2FollowBullet = true;
-        }
-    }
-
-    public void checkHitBoss() {
-        if (!getIntersectingObjects(Boss.class).isEmpty() && allowHitBoss) {
-            decreaseHealth();
-            allowHitBoss = false;
-        } else if (getIntersectingObjects(Boss.class).isEmpty()) {
-            allowHitBoss = true;
-        }
-    }
-
-    public void checkHitBossShots() {
-        List<WeaponOfTheBoss> weaponList = getIntersectingObjects(WeaponOfTheBoss.class);
-        if (!weaponList.isEmpty() && allowHitBossShots) {
-            decreaseHealth();
-            weaponList.forEach(w -> getWorld().removeObject(w));
-            allowHitBossShots = false;
-
-        } else if (weaponList.isEmpty()) {
-            allowHitBossShots = true;
-        }
-    }
-
-    public void checkHitEndBoss() {
-        if (!getIntersectingObjects(Endboss.class).isEmpty() && allowHitEndBoss) {
-            decreaseHealth();
-            allowHitEndBoss = false;
-        } else if (getIntersectingObjects(Endboss.class).isEmpty()) {
-            allowHitEndBoss = true;
-        }
-    }
-
-    public void checkHitEndBossShots() {
-        List<EndbossWeapon> weaponList = getIntersectingObjects(EndbossWeapon.class);
-        if (!weaponList.isEmpty() && allowHitEndBossShots) {
-            decreaseHealth();
-            weaponList.forEach(w -> getWorld().removeObject(w));
-            allowHitEndBossShots = false;
-
-        } else if (weaponList.isEmpty()) {
-            allowHitEndBossShots = true;
-        }
-    }
-
-    public void checkHitMegaWeapon() {
-        List<MegaWeapon> weaponList = getIntersectingObjects(MegaWeapon.class);
-        if (!weaponList.isEmpty() && allowHitMegaWeapon) {
-            decreaseHealth();
-            decreaseHealth();
-            weaponList.forEach(w -> getWorld().removeObject(w));
-            allowHitMegaWeapon = false;
-
-        } else if (weaponList.isEmpty()) {
-            allowHitMegaWeapon = true;
-        }
-    }
-
-    public void checkHitBee() {
-        if (!getIntersectingObjects(Enemy2.class).isEmpty() && allowHitBee) {
-            decreaseHealth();
-            allowHitBee = false;
-        } else if (getIntersectingObjects(Enemy2.class).isEmpty()) {
-            allowHitBee = true;
-        }
-    }
-
-    public void checkHitBeeBullet() {
-        List<BeeBullet> weaponList = getIntersectingObjects(BeeBullet.class);
-        if (!weaponList.isEmpty() && allowHitBeeBullet) {
-            decreaseHealth();
-            weaponList.forEach(w -> getWorld().removeObject(w));
-            allowHitBeeBullet = false;
-
-        } else if (weaponList.isEmpty()) {
-            allowHitBeeBullet = true;
-        }
-    }
-
-    /**
-     * thats all
-     */
-
 
     public int getWalkingSpeed(int actual) {
         //Berechnet die Geschwindigkeit aus der jeweiligen Maximalgeschwindigkeit. Dies sorgt für eine gewisse Trägheit beim Bewegen des Charakters.
         return (int) (actual * multiplier);
+    }
+
+    private void accelMove() {
+        mac++;
+        if (mac >= 7 && multiplier <= 1 && (upPressed || downPressed || leftPressed || rightPressed)) {
+            multiplier = multiplier + 0.33;
+            mac = 0;
+        }
+        multiplier = 1;
     }
 
     private void walk() {
@@ -550,26 +337,113 @@ public abstract class Player extends Actor {
         return true;
     }
 
-    public void shelves() {
-        if (isTouching(Shelf.class)) {
+    public void touchObjects() {
+        for (int i = 0; i < 4; i++) {
+            switch (i) {
+                case 1:
+                    touchingClass = Shelf.class;
+                    break;
+                case 2:
+                    touchingClass = DecoKnight.class;
+                    break;
+                case 3:
+                    touchingClass = Boss2.class;
+                    break;
+            }
+            resetPosition();
+        }
+    }
+
+    public void resetPosition() {
+        if (isTouching(touchingClass)) {
             this.setLocation(lastX, lastY);
             return;
         }
     }
 
-    public void knights() {
-        if (isTouching(DecoKnight.class)) {
-            this.setLocation(lastX, lastY);
-            return;
-        }
+
+    /**
+     * Everything about the Hashmap
+     */
+    public void initEnemyMap() {
+        initEnemyMap(RoomOne.class, Bug.class, 4);
+        initEnemyMap(RoomOne.class, Enemy2.class, 4);
+
+
+        initEnemyMap(RoomTwo.class, Bug.class, 4);
+        initEnemyMap(RoomTwo.class, Enemy2.class, 4);
+
+        initEnemyMap(RoomThree.class, Bug.class, 4);
+        initEnemyMap(RoomThree.class, Enemy2.class, 4);
+
+        initItemMap(RoomOne.class, PotionRed.class, 1);
+        initEnemyMap(RoomOne2.class, Bug.class, 2);
+        initEnemyMap(RoomOne2.class, Enemy2.class, 2);
+
+        initEnemyMap(RoomTwo2.class, Bug.class, 1);
+        initEnemyMap(RoomTwo2.class, Enemy2.class, 3);
+
+        initEnemyMap(RoomThree2.class, Bug.class, 0);
+        initEnemyMap(RoomThree2.class, Enemy2.class, 4);
+
+        initEnemyMap(RoomFour2.class, Bug.class, 2);
+        initEnemyMap(RoomFour2.class, Enemy2.class, 2);
+
+        initEnemyMap(RoomFive2.class, Bug.class, 3);
+        initEnemyMap(RoomFive2.class, Enemy2.class, 1);
+
+        initEnemyMap(RoomSix2.class, Bug.class, 3);
+        initEnemyMap(RoomSix2.class, Enemy2.class, 3);
+
+        initItemMap(RoomOne.class, PotionRed.class, 1);
+        initItemMap(RoomBoss.class, PotionGreen.class, 1);
+        initItemMap(RoomBoss.class, PotionBlue.class, 1);
+        initItemMap(RoomThree.class, PotionPurple.class, 1);
+
+        initItemMap(RoomOne2.class, PotionRed.class, 1);
+        initItemMap(RoomTwo2.class, PotionBlue.class, 1);
+        initItemMap(RoomTwo2.class, PotionGreen.class, 1);
+        initItemMap(RoomThree2.class, PotionBlue.class, 1);
+        initItemMap(RoomFour2.class, PotionPurple.class, 1);
+        initItemMap(RoomFive2.class, PotionBlue.class, 1);
+        initItemMap(RoomFive2.class, PotionRed.class, 1);
+        initItemMap(RoomSix2.class, PotionGreen.class, 1);
+        initItemMap(RoomBoss2.class, PotionPurple.class, 1);
+        initItemMap(RoomBoss2.class, PotionBlue.class, 1);
+        initItemMap(RoomBoss2.class, PotionGreen.class, 1);
     }
 
-    public void boss2() {
-        if (isTouching(Boss2.class)) {
-            this.setLocation(lastX, lastY);
-            return;
-        }
+    private void initItemMap(Class<? extends BaseWorld> worldClass, Class<? extends BaseItem> itemClass, int i) {
 
+        HashMap<Class<? extends BaseItem>, Integer> roomMap = itemsMap.get(worldClass);
+        if (roomMap == null) {
+            roomMap = new HashMap<>();
+        }
+        roomMap.put(itemClass, i);
+        itemsMap.put(worldClass, roomMap);
+    }
+
+    void initEnemyMap(Class<? extends BaseWorld> worldClass, Class<? extends BaseEnemy> enemyClass, Integer mainEnemyAmount) {
+        HashMap<Class<? extends BaseEnemy>, Integer> roomMap = levelmap.get(worldClass);
+        if (roomMap == null) {
+            roomMap = new HashMap<>();
+        }
+        roomMap.put(enemyClass, mainEnemyAmount);
+        levelmap.put(worldClass, roomMap);
+    }
+
+    public HashMap<Class<? extends BaseWorld>, HashMap<Class<? extends BaseEnemy>, Integer>> getLevelmap() {
+        return levelmap;
+    }
+
+    private ArrayList<BaseItem> itemsCollection = new ArrayList<>();
+
+    public ArrayList<BaseItem> getItemsCollection() {
+        return itemsCollection;
+    }
+
+    public HashMap<Class<? extends BaseWorld>, HashMap<Class<? extends BaseItem>, Integer>> getItemMap() {
+        return itemsMap;
     }
 }
 
