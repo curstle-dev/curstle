@@ -1,20 +1,16 @@
 package de.wgkassel.curstle.enemy.Endboss;
 
-import greenfoot.Actor;
+import de.wgkassel.curstle.enemy.BaseBullet;
 
-public class EndbossWeapon extends Actor {
+public class EndbossWeapon extends BaseBullet {
 
     public EndbossWeapon() {
-
         setImage("weaponoftheboss.png");
+        speed = 6;
     }
 
     @Override
     public void act() {
         super.act();
-        move(6);
-        if (isAtEdge()) {
-            getWorld().removeObject(this);
-        }
     }
 }

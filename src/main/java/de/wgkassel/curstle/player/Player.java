@@ -85,7 +85,7 @@ public abstract class Player extends Actor {
      * checks if anything can harm the player
      */
     public void checkHits() {
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 5; i++) {
             switch (i) {
                 case 1:
                     checkHit = MainEnemy.class;
@@ -100,28 +100,8 @@ public abstract class Player extends Actor {
                     checkHit = Boss2Enemy.class;
                     break;
                 case 5:
-                    checkHit = Boss2Bullet.class;
+                    checkHit = BaseBullet.class;
                     break;
-                case 6:
-                    checkHit = Boss2FollowBullet.class;
-                    break;
-                case 7:
-                    checkHit = ShotgunShot.class;
-                    break;
-                case 8:
-                    checkHit = WeaponOfTheBoss.class;
-                    break;
-                case 9:
-                    checkHit = EndbossWeapon.class;
-                    break;
-                case 10:
-                    checkHit = MegaWeapon.class;
-                    break;
-                case 11:
-                    checkHit = BeeBullet.class;
-                    break;
-
-
             }
             if (!getIntersectingObjects(checkHit).isEmpty()) {
                 if (System.currentTimeMillis() - time > 1000) {
@@ -375,7 +355,7 @@ public abstract class Player extends Actor {
 
     /**
      * Everything about the hash map
-     *
+     * <p>
      * halp
      */
     public void initEnemyMap() {

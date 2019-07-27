@@ -1,18 +1,20 @@
 package de.wgkassel.curstle.enemy.Boss1;
 
+import de.wgkassel.curstle.enemy.BaseBullet;
 import de.wgkassel.curstle.player.Sword;
 import greenfoot.Actor;
 
-public class WeaponOfTheBoss extends Actor {
+public class WeaponOfTheBoss extends BaseBullet {
 
     public WeaponOfTheBoss() {
         setImage("Endboss_sword.png");
+        speed = 5;
     }
+
 
     @Override
     public void act() {
         super.act();
-        move(5);
         counter();
 
     }
@@ -20,10 +22,8 @@ public class WeaponOfTheBoss extends Actor {
 
     public void counter() {
         if (isTouching(Sword.class)) {
-            getWorld().removeObject(this);
+            removeMe = true;
             return;
-        } else if (isAtEdge()) {
-            getWorld().removeObject(this);
         }
     }
 }

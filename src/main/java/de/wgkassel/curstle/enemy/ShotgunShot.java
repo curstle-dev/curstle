@@ -1,7 +1,5 @@
 package de.wgkassel.curstle.enemy;
 
-import greenfoot.Actor;
-
 public class ShotgunShot extends BaseBullet {
     private long counter;
 
