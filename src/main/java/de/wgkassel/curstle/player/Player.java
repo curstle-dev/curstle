@@ -27,12 +27,15 @@ import java.util.List;
 
 public abstract class Player extends Actor {
 
-    public static final double DEFAULT_MULTIPLIER = 0.001;
-
+    //variables for checkHit
     private long time = System.currentTimeMillis();
     private Class checkHit;
 
+    //lives of the Player
     public static int lives = 10;
+
+    //variables for the walking delay
+    public static final double DEFAULT_MULTIPLIER = 0.001;
     private double multiplier = DEFAULT_MULTIPLIER;
     private int mac /*multiplier acceleration count*/ = 0;
     private int mbc /*multiplier braking count*/ = 0;
@@ -41,6 +44,7 @@ public abstract class Player extends Actor {
     private Direction direction = null;
     private boolean moving;
 
+    //general movement variables and collision
     private boolean upPressed;
     private boolean leftPressed;
     private boolean downPressed;
@@ -50,15 +54,22 @@ public abstract class Player extends Actor {
     private int lastY;
     private Class touchingClass;
 
+    //generates hash map
     private HashMap<Class<? extends BaseWorld>, HashMap<Class<? extends BaseEnemy>, Integer>> levelmap = new HashMap<>();
     private HashMap<Class<? extends BaseWorld>, HashMap<Class<? extends BaseItem>, Integer>> itemsMap = new HashMap<>();
 
 
+    /**
+     * Constructor
+     */
     public Player() {
         initEnemyMap();
     }
 
 
+    /**
+     * Act
+     */
     @Override
     public final void act() {
         super.act();
@@ -363,7 +374,9 @@ public abstract class Player extends Actor {
 
 
     /**
-     * Everything about the Hashmap
+     * Everything about the hash map
+     *
+     * halp
      */
     public void initEnemyMap() {
         initEnemyMap(RoomOne.class, Bug.class, 4);
