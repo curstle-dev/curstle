@@ -84,12 +84,12 @@ public class Knight extends Player {
     public void cancelSword() {
         if (!Greenfoot.isKeyDown("up") && !Greenfoot.isKeyDown("right") && (!Greenfoot.isKeyDown("down")) && (!Greenfoot.isKeyDown("left"))) {
             allowHit = true;
-            Sword.allowHit = true;
-            Sword.allowBossHit = true;
-            Sword.allowEndbossHit = true;
-            Sword.allowHitEnemy2 = true;
-            Sword.allowHitBoss2Enemy = true;
-            Sword.allowHitBoss2 = true;
+            SwordHit.allowHit = true;
+            SwordHit.allowBossHit = true;
+            SwordHit.allowEndbossHit = true;
+            SwordHit.allowHitEnemy2 = true;
+            SwordHit.allowHitBoss2Enemy = true;
+            SwordHit.allowHitBoss2 = true;
 
 
         }
@@ -144,7 +144,7 @@ public class Knight extends Player {
                 walkAnimation = 0;
             }
             this.getImage().scale(91, 131);
-        } else if (!upPressed && !downPressed && !leftPressed && !rightPressed) {
+        } else if (!upPressed && !downPressed && !leftPressed && !rightPressed && !Greenfoot.isKeyDown("right") && !Greenfoot.isKeyDown("left") && !Greenfoot.isKeyDown("up") && !Greenfoot.isKeyDown("down")) {
             setImage("Knight.png");
             this.getImage().scale(91, 131);
         }

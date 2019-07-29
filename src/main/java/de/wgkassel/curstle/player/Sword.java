@@ -18,13 +18,9 @@ import static de.wgkassel.curstle.player.Direction.UP;
 
 public class Sword extends Actor {
 
-    static boolean allowHit = true;
-    static boolean allowHitBoss2Enemy = true;
-    static boolean allowBossHit = true;
-    static boolean allowHitBoss2 = true;
-    static boolean allowEndbossHit = true;
-    private int swordRange = 190;
-    static boolean allowHitEnemy2 = true;
+
+
+
     int startRotation;
     int x;
     static boolean amIThere = true;
@@ -32,20 +28,14 @@ public class Sword extends Actor {
     public static int swordY;
 
     public Sword() {
-        setImage("sword.png");
-        this.getImage().scale(130, 130);
+        setImage("Sword.png");
+        this.getImage().scale(190, 190);
     }
 
     @Override
     public void act() {
         super.act();
-        checkEnemy();
-        checkBoss();
-        checkEndboss();
         followPlayer();
-        resetAllowHits();
-        checkBoss2Enemy();
-        checkBoss2();
         animation();
 
     }
@@ -70,82 +60,6 @@ public class Sword extends Actor {
     }
 
 
-    /**
-     * resets allowHits
-     */
-    public void resetAllowHits() {
-        if (!Greenfoot.isKeyDown("up") && !Greenfoot.isKeyDown("down") && !Greenfoot.isKeyDown("right") && !Greenfoot.isKeyDown("left")) {
-            allowHit = true;
-            allowBossHit = true;
-            allowEndbossHit = true;
-            allowHitEnemy2 = true;
-        }
-    }
-
-    /**
-     * checks if there is a Bug
-     */
-    public void checkEnemy() {
-        List<BaseEnemy> intersectingObjects = getObjectsInRange(swordRange, BaseEnemy.class);
-        if (allowHit) {
-            if (intersectingObjects != null) {
-                intersectingObjects.forEach(BaseEnemy::lowerHealth);
-                allowHit = false;
-            }
-        } else if (intersectingObjects == null) {
-            allowHit = true;
-        }
-    }
-
-
-    /**
-     * checks if there is a Boss2Enemy
-     */
-    public void checkBoss2Enemy() {
-        List<Boss2Enemy> intersectingObjects = getObjectsInRange(swordRange, Boss2Enemy.class);
-        if (allowHitBoss2Enemy) {
-            if (intersectingObjects != null) {
-                intersectingObjects.forEach(Boss2Enemy::lowerHealth);
-                allowHitBoss2Enemy = false;
-            }
-        } else if (intersectingObjects == null) {
-            allowHitBoss2Enemy = true;
-        }
-    }
-
-    /**
-     * check the if there is a Boss
-     */
-    public void checkBoss() {
-        if (!getObjectsInRange(swordRange, BossImage.class).isEmpty() && allowBossHit) {
-            Boss.lives--;
-            Greenfoot.playSound("hit.wav");
-            allowBossHit = false;
-        }
-    }
-
-
-    /**
-     * check the if there is a Boss2
-     */
-    public void checkBoss2() {
-        if (!getObjectsInRange(swordRange, Boss2.class).isEmpty() && allowHitBoss2) {
-            Boss2.lives--;
-            Greenfoot.playSound("hit.wav");
-            allowHitBoss2 = false;
-        }
-    }
-
-    /**
-     * check if theres an Endboss
-     */
-    public void checkEndboss() {
-        if (!getObjectsInRange(swordRange, EndbossImage.class).isEmpty() && allowEndbossHit && !Endboss.invisible) {
-            Endboss.live--;
-            Greenfoot.playSound("hit.wav");
-            allowEndbossHit = false;
-        }
-    }
 
     /**
      * Sword follows the player :o
@@ -164,26 +78,26 @@ public class Sword extends Actor {
                 startRotation = 90;
                 break;
             case DOWN:
-                setLocation(playerX, playerY + 100);
-                swordX = this.getX();
-                swordY = this.getY();
-                this.setRotation(175);
-                startRotation = 175;
-                break;
-            case LEFT:
-                setLocation(playerX - 100, playerY);
-                swordX = this.getX();
-                swordY = this.getY();
-                this.setRotation(0);
-                startRotation = 0;
-                break;
-            case RIGHT:
-            default:
-                setLocation(playerX + 100, playerY);
+                setLocation(playerX + 30, playerY + 40);
                 swordX = this.getX();
                 swordY = this.getY();
                 this.setRotation(90);
                 startRotation = 90;
+                break;
+            case LEFT:
+                setLocation(playerX - 37, playerY + 28);
+                swordX = this.getX();
+                swordY = this.getY();
+                this.setRotation(270);
+                startRotation = 270;
+                break;
+            case RIGHT:
+            default:
+                setLocation(playerX + 37, playerY  + 28);
+                swordX = this.getX();
+                swordY = this.getY();
+                this.setRotation(0);
+                startRotation =  0;
                 break;
         }
 
