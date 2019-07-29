@@ -1,4 +1,4 @@
-package de.wgkassel.curstle;
+package de.wgkassel.curstle.RoomContent;
 import greenfoot.Actor;
 
 public class Torch extends Actor {

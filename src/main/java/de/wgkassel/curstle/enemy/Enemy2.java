@@ -63,7 +63,7 @@ public class Enemy2 extends BaseEnemy {
             getWorld().addObject(beeBullet, this.getX(), this.getY());
             beeBullet.getRotation();
             waitForAttack = System.currentTimeMillis();
-            beeBullet.whenAmIAway = System.currentTimeMillis();
+            beeBullet.time = System.currentTimeMillis();
             canIAttack = false;
         }
     }

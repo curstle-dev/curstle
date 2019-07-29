@@ -1,6 +1,6 @@
 package de.wgkassel.curstle.Worlds.Level1;
 
-import de.wgkassel.curstle.Torch;
+import de.wgkassel.curstle.RoomContent.Torch;
 import de.wgkassel.curstle.Worlds.StartScreen.ChangeCharacter;
 import de.wgkassel.curstle.Worlds.StartScreen.StartScreen2;
 import de.wgkassel.curstle.player.Player;

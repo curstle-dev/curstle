@@ -1,6 +1,6 @@
 package de.wgkassel.curstle.Worlds;
 
-import de.wgkassel.curstle.Torch;
+import de.wgkassel.curstle.RoomContent.Torch;
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
 import de.wgkassel.curstle.enemy.ShotgunMan;
 import de.wgkassel.curstle.player.Hearts;

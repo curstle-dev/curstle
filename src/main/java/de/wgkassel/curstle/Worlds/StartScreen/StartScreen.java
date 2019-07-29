@@ -6,6 +6,7 @@ import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
 import de.wgkassel.curstle.gates.MainGate;
 import de.wgkassel.curstle.player.Knight;
 import de.wgkassel.curstle.player.Mage;
+import de.wgkassel.curstle.player.SwordHit;
 import greenfoot.Greenfoot;
 
 public class StartScreen extends BaseWorld {

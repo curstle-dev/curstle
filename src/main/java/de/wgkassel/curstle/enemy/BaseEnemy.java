@@ -41,6 +41,6 @@ public class BaseEnemy extends Actor {
             move(10);
         }
     }
-
+public void lowerHealth(){}
 
 }

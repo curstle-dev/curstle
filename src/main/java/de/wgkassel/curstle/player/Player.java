@@ -9,14 +9,8 @@ import de.wgkassel.curstle.Worlds.Level1.*;
 import de.wgkassel.curstle.Worlds.Level2.*;
 import de.wgkassel.curstle.enemy.*;
 import de.wgkassel.curstle.enemy.Boss1.Boss;
-import de.wgkassel.curstle.enemy.Boss1.WeaponOfTheBoss;
 import de.wgkassel.curstle.enemy.Boss2.Boss2;
-import de.wgkassel.curstle.enemy.Boss2.Boss2Bullet;
 import de.wgkassel.curstle.enemy.Boss2.Boss2Enemy;
-import de.wgkassel.curstle.enemy.Boss2.Boss2FollowBullet;
-import de.wgkassel.curstle.enemy.Endboss.Endboss;
-import de.wgkassel.curstle.enemy.Endboss.EndbossWeapon;
-import de.wgkassel.curstle.enemy.Endboss.MegaWeapon;
 import de.wgkassel.curstle.items.*;
 import greenfoot.Actor;
 import greenfoot.Greenfoot;
@@ -45,10 +39,10 @@ public abstract class Player extends Actor {
     private boolean moving;
 
     //general movement variables and collision
-    private boolean upPressed;
-    private boolean leftPressed;
-    private boolean downPressed;
-    private boolean rightPressed;
+    public boolean upPressed;
+    public boolean leftPressed;
+    public boolean downPressed;
+    public boolean rightPressed;
     private int wallSize = 145;
     private int lastX;
     private int lastY;
@@ -85,16 +79,13 @@ public abstract class Player extends Actor {
      * checks if anything can harm the player
      */
     public void checkHits() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             switch (i) {
                 case 1:
-                    checkHit = MainEnemy.class;
+                    checkHit = BaseEnemy.class;
                     break;
                 case 2:
                     checkHit = Boss.class;
-                    break;
-                case 3:
-                    checkHit = Enemy2.class;
                     break;
                 case 4:
                     checkHit = Boss2Enemy.class;

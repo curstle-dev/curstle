@@ -29,8 +29,9 @@ public class Boss2Bar extends Actor {
             image.fillRect(1, 1, lives * pixelsPerLive, barHeight);
         }
     }
-    public void remove(){
-        if(lives <= 0){
+
+    public void remove() {
+        if (lives <= 0) {
             getWorld().removeObject(this);
         }
     }

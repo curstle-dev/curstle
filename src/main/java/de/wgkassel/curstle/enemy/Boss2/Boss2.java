@@ -1,8 +1,6 @@
 package de.wgkassel.curstle.enemy.Boss2;
 
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
-import de.wgkassel.curstle.enemy.Endboss.EndbossWeapon;
-import de.wgkassel.curstle.enemy.Enemy2;
 import de.wgkassel.curstle.player.Player;
 import greenfoot.Actor;
 import greenfoot.Greenfoot;
@@ -180,8 +178,9 @@ public class Boss2 extends Actor {
             pause();
         }
     }
-    public void die(){
-        if (lives <= 0){
+
+    public void die() {
+        if (lives <= 0) {
             getWorld().removeObject(this);
         }
     }

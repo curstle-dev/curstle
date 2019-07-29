@@ -9,9 +9,4 @@ public class Boss2Bullet extends BaseBullet {
         this.getImage().scale(146, 100);
         speed = 5;
     }
-
-    @Override
-    public void act() {
-        super.act();
-    }
 }

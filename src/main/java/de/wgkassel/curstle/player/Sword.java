@@ -13,6 +13,9 @@ import greenfoot.Greenfoot;
 
 import java.util.List;
 
+import static de.wgkassel.curstle.player.Direction.LEFT;
+import static de.wgkassel.curstle.player.Direction.UP;
+
 public class Sword extends Actor {
 
     static boolean allowHit = true;
@@ -22,26 +25,50 @@ public class Sword extends Actor {
     static boolean allowEndbossHit = true;
     private int swordRange = 190;
     static boolean allowHitEnemy2 = true;
+    int startRotation;
+    int x;
+    static boolean amIThere = true;
+    public static int swordX;
+    public static int swordY;
 
     public Sword() {
         setImage("sword.png");
-        this.getImage().scale(150, 150);
-
+        this.getImage().scale(130, 130);
     }
 
     @Override
     public void act() {
         super.act();
         checkEnemy();
-        checkEnemy2();
         checkBoss();
         checkEndboss();
         followPlayer();
         resetAllowHits();
         checkBoss2Enemy();
         checkBoss2();
+        animation();
 
     }
+
+    public void animation() {
+        setRotation(startRotation + x);
+        if (Knight.swordDirection == UP || Knight.swordDirection == LEFT) {
+            x = x - 9;
+            if (x < -90) {
+                x = 0;
+                amIThere = false;
+                getWorld().removeObject(this);
+            }
+        } else {
+            x = x + 9;
+            if (getRotation() > startRotation + 90) {
+                x = 0;
+                amIThere = false;
+                getWorld().removeObject(this);
+            }
+        }
+    }
+
 
     /**
      * resets allowHits
@@ -59,16 +86,17 @@ public class Sword extends Actor {
      * checks if there is a Bug
      */
     public void checkEnemy() {
-        List<MainEnemy> intersectingObjects = getObjectsInRange(swordRange, MainEnemy.class);
+        List<BaseEnemy> intersectingObjects = getObjectsInRange(swordRange, BaseEnemy.class);
         if (allowHit) {
             if (intersectingObjects != null) {
-                intersectingObjects.forEach(MainEnemy::lowerHealth);
+                intersectingObjects.forEach(BaseEnemy::lowerHealth);
                 allowHit = false;
             }
         } else if (intersectingObjects == null) {
             allowHit = true;
         }
     }
+
 
     /**
      * checks if there is a Boss2Enemy
@@ -82,21 +110,6 @@ public class Sword extends Actor {
             }
         } else if (intersectingObjects == null) {
             allowHitBoss2Enemy = true;
-        }
-    }
-
-    /**
-     * checks if there is a BEEEEEEEE
-     */
-    public void checkEnemy2() {
-        List<Enemy2> intersectingObjects = getObjectsInRange(swordRange, Enemy2.class);
-        if (allowHitEnemy2) {
-            if (intersectingObjects != null) {
-                intersectingObjects.forEach(Enemy2::lowerHealth);
-                allowHitEnemy2 = false;
-            }
-        } else if (intersectingObjects == null) {
-            allowHitEnemy2 = true;
         }
     }
 
@@ -145,20 +158,32 @@ public class Sword extends Actor {
         switch (Knight.swordDirection) {
             case UP:
                 setLocation(playerX, playerY - 100);
+                swordX = this.getX();
+                swordY = this.getY();
                 this.setRotation(90);
+                startRotation = 90;
                 break;
             case DOWN:
                 setLocation(playerX, playerY + 100);
+                swordX = this.getX();
+                swordY = this.getY();
                 this.setRotation(175);
+                startRotation = 175;
                 break;
             case LEFT:
                 setLocation(playerX - 100, playerY);
+                swordX = this.getX();
+                swordY = this.getY();
                 this.setRotation(0);
+                startRotation = 0;
                 break;
             case RIGHT:
             default:
                 setLocation(playerX + 100, playerY);
+                swordX = this.getX();
+                swordY = this.getY();
                 this.setRotation(90);
+                startRotation = 90;
                 break;
         }
 
