@@ -54,6 +54,7 @@ public class Sword extends Actor {
             if (getRotation() > startRotation + 90) {
                 x = 0;
                 amIThere = false;
+                getImage().setTransparency(255);
                 getWorld().removeObject(this);
             }
         }
@@ -76,8 +77,10 @@ public class Sword extends Actor {
                 swordY = this.getY();
                 this.setRotation(90);
                 startRotation = 90;
+                getImage().setTransparency(0);
                 break;
             case DOWN:
+                getImage().setTransparency(255);
                 setLocation(playerX + 30, playerY + 40);
                 swordX = this.getX();
                 swordY = this.getY();
@@ -85,6 +88,7 @@ public class Sword extends Actor {
                 startRotation = 90;
                 break;
             case LEFT:
+                getImage().setTransparency(255);
                 setLocation(playerX - 37, playerY + 28);
                 swordX = this.getX();
                 swordY = this.getY();
@@ -93,6 +97,7 @@ public class Sword extends Actor {
                 break;
             case RIGHT:
             default:
+                getImage().setTransparency(255);
                 setLocation(playerX + 37, playerY  + 28);
                 swordX = this.getX();
                 swordY = this.getY();

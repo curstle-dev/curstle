@@ -10,16 +10,20 @@ import greenfoot.Greenfoot;
 import java.util.List;
 
 public abstract class MainEnemy extends BaseEnemy {
-
+    boolean moveVertical = false;
+    boolean moveHorizontal = false;
+    boolean deBounce = false;
+    int lives = 4;
+    boolean hit;
+    private int lastX;
+    private int lastY;
 
     public MainEnemy() {
 
 
     }
 
-    boolean deBounce = false;
-    int lives = 4;
-    boolean hit;
+
 
 
     /**
@@ -29,7 +33,8 @@ public abstract class MainEnemy extends BaseEnemy {
     public void act() {
 
         super.act();
-
+        getLastCords();
+        checkDirection();
 
         if (deBounce) {
 
@@ -37,7 +42,6 @@ public abstract class MainEnemy extends BaseEnemy {
             followThePlayer();
         }
         deBounce = true;
-        walk();
         if (isTouching(MageShot.class)) {
             lives--;
             lives--;
@@ -48,8 +52,15 @@ public abstract class MainEnemy extends BaseEnemy {
             }
             move(-50);
         }
+        walk();
     }
 
+    public void getLastCords(){
+        if(getObjectsInRange(100, MainEnemy.class).isEmpty()) {
+            lastX = this.getX();
+            lastY = this.getY();
+        }
+    }
     /**
      * Health for all Enemies
      */
@@ -69,18 +80,29 @@ public abstract class MainEnemy extends BaseEnemy {
     public void walk() {
         List<Player> players = getObjectsInRange(600, Player.class);
         int nPlayers = players.size();
-        if (nPlayers >= 1) {
-            move(3);
-        }
-        if (isTouching(Shelf.class)) {
-            turn(180);
-            move(3);
-        }
-        if (isTouching(Wall.class)) {
-            turn(180);
-            move(3);
-        }
+        if (getObjectsInRange(100, Player.class).isEmpty()) {
+            if (!getObjectsInRange(200, MainEnemy.class).isEmpty()) {
+                if (moveHorizontal){
+                    setLocation(getX(), lastY);
+                }
+                else if (moveVertical){
+                    setLocation(lastX, getY());
+                }
+            }
 
+            if (nPlayers >= 1) {
+                move(3);
+            }
+            if (isTouching(Shelf.class)) {
+                turn(180);
+                move(3);
+            }
+            if (isTouching(Wall.class)) {
+                turn(180);
+                move(3);
+            }
+
+        }
     }
 
 
@@ -98,6 +120,25 @@ public abstract class MainEnemy extends BaseEnemy {
         }
     }
 
+    public void checkDirection() {
+        Player player = ((BaseWorld) getWorld()).getPlayer();
+        int playerX = player.getX();
+        int playerY = player.getY();
+        int enemyX = this.getX();
+        int enemyY = this.getY();
+        int deltaX = playerX - enemyX;
+        int deltaY = playerY - enemyY;
+
+        if (deltaX > deltaY) {
+            moveHorizontal = true;
+        } else if(deltaY > deltaX){
+            moveVertical = true;
+        }
+        else {
+            moveHorizontal = false;
+            moveVertical = false;
+        }
+    }
 
 }
 

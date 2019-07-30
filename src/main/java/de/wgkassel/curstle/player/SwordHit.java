@@ -47,7 +47,7 @@ public class SwordHit extends Actor {
     public void followPlayer() {
         switch (Knight.swordDirection) {
             case UP:
-                setLocation(Sword.swordX, Sword.swordY - offset);
+                setLocation(Sword.swordX, Sword.swordY - offset + 60);
                 this.setRotation(270);
                 break;
             case DOWN:
