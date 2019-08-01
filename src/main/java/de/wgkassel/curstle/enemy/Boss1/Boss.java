@@ -13,8 +13,6 @@ public class Boss extends Actor {
     private long shotPause = System.currentTimeMillis();
     private boolean shouldBeZigZagging = false;
     private boolean firstZigZag = false;
-    private boolean firstWalk = false;
-    private int turnCount = 0;
     private boolean firstZigZagDone = false;
     private BossImage image = new BossImage();
     private boolean whenCanIAttackThePlayer = false;
@@ -187,7 +185,6 @@ public class Boss extends Actor {
             move(7);
             ZigZag = 1;
         }
-        firstWalk = true;
         move(15);
         if (!isInStartArea()) {
             firstZigZagDone = true;
@@ -217,15 +214,6 @@ public class Boss extends Actor {
         weapon.setRotation(rotationOffset);
         shotPause = System.currentTimeMillis();
     }
-
-    private boolean shouldTurn(int dMin, int dMax) {
-        return this.shouldTurn(dMin, dMax, 2500);
-    }
-
-    private boolean shouldTurn(int dMin, int dMax, long sec) {
-        return this.getRotation() >= dMin && getRotation() < dMax && System.currentTimeMillis() - lastTurn > sec;
-    }
-
 
     /**
      * Boss dies

@@ -9,19 +9,16 @@ import java.util.List;
 public class Enemy2 extends BaseEnemy {
 
     private State state = State.WALK;
-    boolean canIAttack = true;
-    long waitForAttack = System.currentTimeMillis();
-    int lives = 1;
-    boolean hit;
+    private boolean canIAttack = true;
+    private long waitForAttack = System.currentTimeMillis();
+    private int lives = 1;
 
     public Enemy2() {
         setImage("bee2.png");
         this.getImage().scale(87, 90);
     }
 
-    private enum State {
-        WALK, ATTACK;
-    }
+    private enum State {WALK, ATTACK}
 
     @Override
     public void act() {
@@ -57,7 +54,7 @@ public class Enemy2 extends BaseEnemy {
     /**
      * shoots at the player if the player is in range
      */
-    public void attackThePlayer() {
+    private void attackThePlayer() {
         if (canIAttack) {
             BeeBullet beeBullet = new BeeBullet();
             getWorld().addObject(beeBullet, this.getX(), this.getY());
@@ -72,7 +69,7 @@ public class Enemy2 extends BaseEnemy {
     /**
      * check if the Bee can shoot
      */
-    public void checkAttack() {
+    private void checkAttack() {
         if (System.currentTimeMillis() - waitForAttack > 2000) {
             canIAttack = true;
         }
@@ -85,7 +82,6 @@ public class Enemy2 extends BaseEnemy {
         Greenfoot.playSound("hit.wav");
         lives--;
         move(-100);
-        hit = true;
         if (lives <= 0) {
             die();
         }

@@ -5,9 +5,6 @@ import greenfoot.Color;
 import greenfoot.GreenfootImage;
 
 public class Boss2Bar extends Actor {
-    private int startLives = 40;
-    private int barWidth = 600;
-    private int barHeight = 60;
     private int lives = 40;
 
     @Override
@@ -17,10 +14,13 @@ public class Boss2Bar extends Actor {
         remove();
     }
 
-    public void update() {
+    private void update() {
         lives = Boss2.lives;
         if (lives != 0) {
+            int startLives = 40;
+            int barWidth = 600;
             int pixelsPerLive = barWidth / startLives;
+            int barHeight = 60;
             setImage(new GreenfootImage(barWidth + 2, barHeight + 2));
             GreenfootImage image = getImage();
             image.setColor(Color.BLACK);
@@ -30,7 +30,7 @@ public class Boss2Bar extends Actor {
         }
     }
 
-    public void remove() {
+    private void remove() {
         if (lives <= 0) {
             getWorld().removeObject(this);
         }

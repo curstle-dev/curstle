@@ -4,17 +4,17 @@ import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
 import de.wgkassel.curstle.player.Player;
 import greenfoot.Actor;
 
-public class BaseBullet extends Actor {
+public abstract class BaseBullet extends Actor {
 
     public int speed;
     private boolean hitPlayer = false;
     private long wait = System.currentTimeMillis();
-    public boolean removeMe = false;
-    public boolean pointAtPlayer = false;
-    public boolean followPlayer = false;
+    private boolean removeMe = false;
+    protected boolean pointAtPlayer = false;
+    private boolean followPlayer = false;
     long time = System.currentTimeMillis();
-    public int whenAmIAway = 1000;
-    public boolean removeAfterTime = false;
+    int whenAmIAway = 1000;
+    boolean removeAfterTime = false;
 
     @Override
     public void act() {
@@ -37,14 +37,14 @@ public class BaseBullet extends Actor {
         }
     }
 
-    public void checkPlayer() {
+    private void checkPlayer() {
         if (!hitPlayer && !getIntersectingObjects(Player.class).isEmpty()) {
             hitPlayer = true;
             wait = System.currentTimeMillis();
         }
     }
 
-    public void checkRemove() {
+    private void checkRemove() {
         if (hitPlayer) {
             if (System.currentTimeMillis() - wait > 10) {
                 removeMe = true;
@@ -55,20 +55,20 @@ public class BaseBullet extends Actor {
 
     }
 
-    public void removeMe() {
+    private void removeMe() {
         if (removeMe) {
             getWorld().removeObject(this);
         }
     }
 
-    public void followPlayer() {
+    private void followPlayer() {
         Player player = ((BaseWorld) getWorld()).getPlayer();
         int playerX = player.getX();
         int playerY = player.getY();
         turnTowards(playerX, playerY);
     }
 
-    public void removeAfterTime() {
+    private void removeAfterTime() {
         if (System.currentTimeMillis() - time > whenAmIAway) {
             removeMe = true;
         }

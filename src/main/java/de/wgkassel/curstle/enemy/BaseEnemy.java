@@ -8,7 +8,7 @@ import greenfoot.Greenfoot;
 
 import java.util.HashMap;
 
-public class BaseEnemy extends Actor {
+public abstract class BaseEnemy extends Actor {
 
     public void die() {
         HashMap<Class<? extends BaseWorld>, HashMap<Class<? extends BaseEnemy>, Integer>> levelmap = ((BaseWorld) getWorld()).getPlayer().getLevelmap();
