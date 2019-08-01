@@ -4,8 +4,8 @@ import greenfoot.Greenfoot;
 
 public class Mage extends Player {
 
-    int cooldown = 40;
-    int walkAnimation = 0;
+   private int cooldown = 40;
+   private int walkAnimation = 0;
 
     public Mage() {
         setImage("Mage.png");
@@ -47,7 +47,7 @@ public class Mage extends Player {
         }
         if (Greenfoot.isKeyDown("left")) {
             MageShot mshot4 = new MageShot();
-            getWorld().addObject(mshot4, this.getX() - 50, this.getY());
+            getWorld().addObject(mshot4, this.getX() +50, this.getY());
             setImage("MageLeft.png");
             this.getImage().scale(128, 216);
             mshot4.setRotation(-180);
@@ -55,13 +55,13 @@ public class Mage extends Player {
         }
     }
 
-    public void looking() {
+    private void looking() {
 
         if (Greenfoot.isKeyDown("w")) {
             if (walkAnimation <= 5) {
                 setImage("MageBackWalk1.png");
                 walkAnimation = walkAnimation + 1;
-            } else if (walkAnimation > 5 && walkAnimation <= 10) {
+            } else if (walkAnimation <= 10) {
                 setImage("MageBackWalk2.png");
                 walkAnimation = walkAnimation + 1;
             } else {
@@ -72,7 +72,7 @@ public class Mage extends Player {
             if (walkAnimation <= 5) {
                 setImage("MageRightWalk1.png");
                 walkAnimation = walkAnimation + 1;
-            } else if (walkAnimation > 5 && walkAnimation <= 10) {
+            } else if (walkAnimation <= 10) {
                 setImage("MageRightWalk2.png");
                 walkAnimation = walkAnimation + 1;
             } else {
@@ -83,7 +83,7 @@ public class Mage extends Player {
             if (walkAnimation <= 5) {
                 setImage("MageLeftWalk1.png");
                 walkAnimation = walkAnimation + 1;
-            } else if (walkAnimation > 5 && walkAnimation <= 10) {
+            } else if (walkAnimation <= 10) {
                 setImage("MageLeftWalk2.png");
                 walkAnimation = walkAnimation + 1;
             } else {
@@ -94,7 +94,7 @@ public class Mage extends Player {
             if (walkAnimation <= 5) {
                 setImage("MageFrontWalk1.png");
                 walkAnimation = walkAnimation + 1;
-            } else if (walkAnimation > 5 && walkAnimation <= 10) {
+            } else if (walkAnimation <= 10) {
                 setImage("MageFrontWalk2.png");
                 walkAnimation = walkAnimation + 1;
             } else {

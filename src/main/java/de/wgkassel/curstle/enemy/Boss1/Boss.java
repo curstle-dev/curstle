@@ -31,7 +31,6 @@ public class Boss extends Actor {
 
     }
 
-
     @Override
     public void act() {
         super.act();
@@ -65,8 +64,6 @@ public class Boss extends Actor {
 
     /**
      * method looks if the Boss can attack the Player
-     *
-     *
      */
     private boolean attack() {
         if (whenCanIAttackThePlayer) {
@@ -87,8 +84,6 @@ public class Boss extends Actor {
 
     /**
      * method looks if the Boss is in the startarea (quarter obenlinks)
-     *
-     *
      */
     private boolean isInStartArea() {
         return (this.getX() <= 250 && this.getX() >= 0)
