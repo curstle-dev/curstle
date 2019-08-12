@@ -10,6 +10,8 @@ import java.util.HashMap;
 
 public abstract class BaseEnemy extends Actor {
 
+    public int lives;
+
     public void die() {
         HashMap<Class<? extends BaseWorld>, HashMap<Class<? extends BaseEnemy>, Integer>> levelmap = ((BaseWorld) getWorld()).getPlayer().getLevelmap();
         Class<? extends BaseWorld> worldClass = ((BaseWorld) getWorld()).getClass();
@@ -41,6 +43,16 @@ public abstract class BaseEnemy extends Actor {
             move(10);
         }
     }
-public void lowerHealth(){}
 
+    /**
+     * Health for all Enemies
+     */
+    public void lowerHealth() {
+        Greenfoot.playSound("hit.wav");
+        lives--;
+        move(-100);
+        if (lives == 0) {
+            die();
+        }
+    }
 }

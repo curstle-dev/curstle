@@ -8,7 +8,7 @@ class.de.wgkassel.curstle.Worlds.Level1.RoomOne.image=world.png
 class.de.wgkassel.curstle.Button.image=actor.png
 class.de.wgkassel.curstle.enemy.Bug.image=enemy.png
 class.de.wgkassel.curstle.enemy.Endboss.Endboss.image=krasser_enemy.png
-class.de.wgkassel.curstle.enemy.Enemy2.image=bee2.png
+class.de.wgkassel.curstle.enemy.Bee.image=bee2.png
 class.de.wgkassel.curstle.enemy.BeeBullet.image=beeBullet2.png
 
 class.de.wgkassel.curstle.Worlds.Level1.RoomOne.image=moss_floor.png

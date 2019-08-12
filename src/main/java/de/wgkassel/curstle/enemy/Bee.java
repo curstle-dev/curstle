@@ -6,16 +6,16 @@ import greenfoot.Greenfoot;
 
 import java.util.List;
 
-public class Enemy2 extends BaseEnemy {
+public class Bee extends BaseEnemy {
 
     private State state = State.WALK;
     private boolean canIAttack = true;
     private long waitForAttack = System.currentTimeMillis();
-    private int lives = 1;
 
-    public Enemy2() {
+    public Bee() {
         setImage("bee2.png");
         this.getImage().scale(87, 90);
+        lives = 1;
     }
 
     private enum State {WALK, ATTACK}
@@ -74,17 +74,4 @@ public class Enemy2 extends BaseEnemy {
             canIAttack = true;
         }
     }
-
-    /**
-     * lowers Health
-     */
-    public void lowerHealth() {
-        Greenfoot.playSound("hit.wav");
-        lives--;
-        move(-100);
-        if (lives <= 0) {
-            die();
-        }
-    }
-
 }

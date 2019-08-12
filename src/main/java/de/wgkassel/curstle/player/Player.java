@@ -351,33 +351,33 @@ public abstract class Player extends Actor {
      */
     public void initEnemyMap() {
         initEnemyMap(RoomOne.class, Bug.class, 4);
-        initEnemyMap(RoomOne.class, Enemy2.class, 4);
+        initEnemyMap(RoomOne.class, Bee.class, 4);
 
 
         initEnemyMap(RoomTwo.class, Bug.class, 4);
-        initEnemyMap(RoomTwo.class, Enemy2.class, 4);
+        initEnemyMap(RoomTwo.class, Bee.class, 4);
 
         initEnemyMap(RoomThree.class, Bug.class, 4);
-        initEnemyMap(RoomThree.class, Enemy2.class, 4);
+        initEnemyMap(RoomThree.class, Bee.class, 4);
 
         initItemMap(RoomOne.class, PotionRed.class, 1);
         initEnemyMap(RoomOne2.class, Bug.class, 2);
-        initEnemyMap(RoomOne2.class, Enemy2.class, 2);
+        initEnemyMap(RoomOne2.class, Bee.class, 2);
 
         initEnemyMap(RoomTwo2.class, Bug.class, 1);
-        initEnemyMap(RoomTwo2.class, Enemy2.class, 3);
+        initEnemyMap(RoomTwo2.class, Bee.class, 3);
 
         initEnemyMap(RoomThree2.class, Bug.class, 0);
-        initEnemyMap(RoomThree2.class, Enemy2.class, 4);
+        initEnemyMap(RoomThree2.class, Bee.class, 4);
 
         initEnemyMap(RoomFour2.class, Bug.class, 2);
-        initEnemyMap(RoomFour2.class, Enemy2.class, 2);
+        initEnemyMap(RoomFour2.class, Bee.class, 2);
 
         initEnemyMap(RoomFive2.class, Bug.class, 3);
-        initEnemyMap(RoomFive2.class, Enemy2.class, 1);
+        initEnemyMap(RoomFive2.class, Bee.class, 1);
 
         initEnemyMap(RoomSix2.class, Bug.class, 3);
-        initEnemyMap(RoomSix2.class, Enemy2.class, 3);
+        initEnemyMap(RoomSix2.class, Bee.class, 3);
 
         initItemMap(RoomOne.class, PotionRed.class, 1);
         initItemMap(RoomBoss.class, PotionGreen.class, 1);

@@ -5,7 +5,6 @@ import de.wgkassel.curstle.RoomContent.Wall;
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
 import de.wgkassel.curstle.player.MageShot;
 import de.wgkassel.curstle.player.Player;
-import greenfoot.Greenfoot;
 
 import java.util.List;
 
@@ -14,17 +13,17 @@ public class Bug extends BaseEnemy {
     private boolean moveVertical = false;
     private boolean moveHorizontal = false;
     private boolean deBounce = false;
-    private int lives = 4;
-    boolean hit;
     private int lastX;
     private int lastY;
+    private int freeX;
+    private int freeY;
+    int BugX;
+    int BugY;
 
     public Bug() {
         setImage("enemy.png");
+        lives = 4;
     }
-
-
-
 
 
     /**
@@ -34,11 +33,13 @@ public class Bug extends BaseEnemy {
     public void act() {
 
         super.act();
-        getLastCords();
         checkDirection();
+        getLastCords();
+        walk();
+        getLastCords();
+
 
         if (deBounce) {
-
             deBounce = false;
             followThePlayer();
         }
@@ -47,31 +48,31 @@ public class Bug extends BaseEnemy {
             lives--;
             lives--;
             removeTouching(MageShot.class);
-            hit = true;
             if (lives == 0) {
                 die();
             }
             move(-50);
         }
-        walk();
     }
 
-    public void getLastCords(){
-        if(getObjectsInRange(100, Bug.class).isEmpty()) {
+    public void getLastCords() {
+
+        if (getIntersectingObjects(Bug.class).isEmpty()) {
             lastX = this.getX();
             lastY = this.getY();
-        }
-    }
-    /**
-     * Health for all Enemies
-     */
-    public void lowerHealth() {
-        Greenfoot.playSound("hit.wav");
-        lives--;
-        move(-100);
-        hit = true;
-        if (lives == 0) {
-            die();
+        } else if (!getIntersectingObjects(Bug.class).isEmpty()) {
+            if (moveHorizontal) {
+                setLocation(BugX, lastY);
+                lastX = this.getX();
+                return;
+            } else if (moveVertical) {
+                setLocation(lastX, BugY);
+                lastY = this.getY();
+                return;
+            }
+            else {
+                return;
+            }
         }
     }
 
@@ -79,31 +80,30 @@ public class Bug extends BaseEnemy {
      * enemy moves forwards
      */
     public void walk() {
-        List<Player> players = getObjectsInRange(600, Player.class);
-        int nPlayers = players.size();
-        if (getObjectsInRange(100, Player.class).isEmpty()) {
-            if (!getObjectsInRange(200, Bug.class).isEmpty()) {
-                if (moveHorizontal){
-                    setLocation(getX(), lastY);
-                }
-                else if (moveVertical){
-                    setLocation(lastX, getY());
-                }
-            }
+        if (getIntersectingObjects(Bug.class).isEmpty()) {
+            List<Player> players = getObjectsInRange(600, Player.class);
+            int nPlayers = players.size();
+            if (getObjectsInRange(100, Player.class).isEmpty()) {
 
-            if (nPlayers >= 1) {
-                move(3);
-            }
-            if (isTouching(Shelf.class)) {
-                turn(180);
-                move(3);
-            }
-            if (isTouching(Wall.class)) {
-                turn(180);
-                move(3);
-            }
 
+                if (nPlayers >= 1) {
+                    move(3);
+                }
+                if (isTouching(Shelf.class)) {
+                    turn(180);
+                    move(3);
+                }
+                if (isTouching(Wall.class)) {
+                    turn(180);
+                    move(3);
+                }
+
+            }
+            BugX = this.getX();
+            BugY = this.getY();
         }
+        else{setLocation(lastX, lastY);}
+
     }
 
 
@@ -127,15 +127,16 @@ public class Bug extends BaseEnemy {
         int playerY = player.getY();
         int enemyX = this.getX();
         int enemyY = this.getY();
-        int deltaX = playerX - enemyX;
-        int deltaY = playerY - enemyY;
+        int deltaX = Math.abs(playerX - enemyX);
+        int deltaY = Math.abs(playerY - enemyY);
 
         if (deltaX > deltaY) {
             moveHorizontal = true;
-        } else if(deltaY > deltaX){
+            moveVertical = false;
+        } else if (deltaY > deltaX) {
             moveVertical = true;
-        }
-        else {
+            moveHorizontal = false;
+        } else {
             moveHorizontal = false;
             moveVertical = false;
         }

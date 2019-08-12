@@ -4,10 +4,10 @@ import de.wgkassel.curstle.RoomContent.SilentObjects;
 import de.wgkassel.curstle.Worlds.Level1.StairsRoom;
 import de.wgkassel.curstle.Worlds.Level1.*;
 import de.wgkassel.curstle.Worlds.Level2.*;
+import de.wgkassel.curstle.enemy.Bee;
 import de.wgkassel.curstle.enemy.Boss1.Boss;
 import de.wgkassel.curstle.enemy.Bug;
 import de.wgkassel.curstle.enemy.Endboss.Endboss;
-import de.wgkassel.curstle.enemy.Enemy2;
 import de.wgkassel.curstle.player.Player;
 import greenfoot.Greenfoot;
 
@@ -21,9 +21,7 @@ public abstract class BaseGate extends SilentObjects {
 
     public static boolean roomTwoCleared = false;
     public static boolean roomThreeCleared = false;
-
     public static boolean roomFour2Cleared = false;
-
     public static boolean twoToOne = false;
     public static boolean threeToOne = false;
     public static boolean bossToOne;
@@ -156,7 +154,7 @@ public abstract class BaseGate extends SilentObjects {
     }
 
     public void generateOne2ToStairs2Gate() {
-        if (getWorld().getObjects(Bug.class).isEmpty() && getWorld().getObjects(Enemy2.class).isEmpty()) {
+        if (getWorld().getObjects(Bug.class).isEmpty() && getWorld().getObjects(Bee.class).isEmpty()) {
             RoomOne2ToStairs2_1 = true;
             setImage("door_open.png");
             this.getImage().rotate(180);
@@ -169,7 +167,7 @@ public abstract class BaseGate extends SilentObjects {
     }
 
     public void generateTwo2ToOne2Gate() {
-        if (getWorld().getObjects(Bug.class).isEmpty() && getWorld().getObjects(Enemy2.class).isEmpty()) {
+        if (getWorld().getObjects(Bug.class).isEmpty() && getWorld().getObjects(Bee.class).isEmpty()) {
             RoomTwo2ToOne2 = true;
             setImage("door_open.png");
             this.getImage().rotate(180);
@@ -193,7 +191,7 @@ public abstract class BaseGate extends SilentObjects {
     }
 
     public void generateRoomTwo2() {
-        if (getWorld().getObjects(Bug.class).isEmpty() && getWorld().getObjects(Enemy2.class).isEmpty()) {
+        if (getWorld().getObjects(Bug.class).isEmpty() && getWorld().getObjects(Bee.class).isEmpty()) {
             setImage("door_open.png");
             if (isTouching(Player.class)) {
                 System.out.println("Generating Room Two 2");
@@ -205,7 +203,7 @@ public abstract class BaseGate extends SilentObjects {
     }
 
     public void generateFiveToTwo2Gate() {
-        if (getWorld().getObjects(Bug.class).isEmpty() && getWorld().getObjects(Enemy2.class).isEmpty()) {
+        if (getWorld().getObjects(Bug.class).isEmpty() && getWorld().getObjects(Bee.class).isEmpty()) {
             RoomFive2ToTwo2 = true;
             setImage("door_open.png");
             if (isTouching(Player.class)) {
@@ -218,7 +216,7 @@ public abstract class BaseGate extends SilentObjects {
     }
 
     public void generateThreeToTwo2Gate() {
-        if (getWorld().getObjects(Bug.class).isEmpty() && getWorld().getObjects(Enemy2.class).isEmpty()) {
+        if (getWorld().getObjects(Bug.class).isEmpty() && getWorld().getObjects(Bee.class).isEmpty()) {
             RoomThree2ToTwo2 = true;
             setImage("door_open.png");
             if (isTouching(Player.class)) {
@@ -231,7 +229,7 @@ public abstract class BaseGate extends SilentObjects {
     }
 
     public void generateRoomThree2() {
-        if (getWorld().getObjects(Bug.class).isEmpty() && getWorld().getObjects(Enemy2.class).isEmpty()) {
+        if (getWorld().getObjects(Bug.class).isEmpty() && getWorld().getObjects(Bee.class).isEmpty()) {
             setImage("door_open.png");
             if (isTouching(Player.class)) {
                 System.out.println("Generating Room Three 2");
@@ -243,7 +241,7 @@ public abstract class BaseGate extends SilentObjects {
 
     public void generateFourToThreeGate() {
         RoomFour2ToThree = true;
-        if (getWorld().getObjects(Bug.class).isEmpty() && getWorld().getObjects(Enemy2.class).isEmpty()) {
+        if (getWorld().getObjects(Bug.class).isEmpty() && getWorld().getObjects(Bee.class).isEmpty()) {
             setImage("door_open.png");
             if (isTouching(Player.class)) {
                 System.out.println("Generating Room Three 2");
@@ -254,7 +252,7 @@ public abstract class BaseGate extends SilentObjects {
     }
 
     public void generateRoomFour2() {
-        if (getWorld().getObjects(Bug.class).isEmpty() && getWorld().getObjects(Enemy2.class).isEmpty()) {
+        if (getWorld().getObjects(Bug.class).isEmpty() && getWorld().getObjects(Bee.class).isEmpty()) {
             setImage("door_open.png");
             if (isTouching(Player.class)) {
                 System.out.println("Generating Room Four 2");
@@ -265,7 +263,7 @@ public abstract class BaseGate extends SilentObjects {
     }
 
     public void generateRoomFive2() {
-        if (getWorld().getObjects(Bug.class).isEmpty() && getWorld().getObjects(Enemy2.class).isEmpty()) {
+        if (getWorld().getObjects(Bug.class).isEmpty() && getWorld().getObjects(Bee.class).isEmpty()) {
             setImage("door_open.png");
             if (isTouching(Player.class)) {
                 System.out.println("Generating Room Five 2");
@@ -276,7 +274,7 @@ public abstract class BaseGate extends SilentObjects {
     }
 
     public void generateSixToFiveGate() {
-        if (getWorld().getObjects(Bug.class).isEmpty() && getWorld().getObjects(Enemy2.class).isEmpty()) {
+        if (getWorld().getObjects(Bug.class).isEmpty() && getWorld().getObjects(Bee.class).isEmpty()) {
             RoomSix2ToFive2 = true;
             setImage("door_open.png");
             if (isTouching(Player.class)) {
@@ -288,7 +286,7 @@ public abstract class BaseGate extends SilentObjects {
     }
 
     public void generateBoss2ToSixGate() {
-        if (getWorld().getObjects(Endboss.class).isEmpty() && getWorld().getObjects(Enemy2.class).isEmpty()) {
+        if (getWorld().getObjects(Endboss.class).isEmpty() && getWorld().getObjects(Bee.class).isEmpty()) {
             setImage("door_open.png");
             this.getImage().rotate(180);
             if (isTouching(Player.class)) {
@@ -300,7 +298,7 @@ public abstract class BaseGate extends SilentObjects {
     }
 
     public void generateRoomSix2() {
-        if (getWorld().getObjects(Bug.class).isEmpty() && getWorld().getObjects(Enemy2.class).isEmpty()) {
+        if (getWorld().getObjects(Bug.class).isEmpty() && getWorld().getObjects(Bee.class).isEmpty()) {
             setImage("door_open.png");
             if (isTouching(Player.class)) {
                 System.out.println("Generating Room Six 2");
@@ -311,7 +309,7 @@ public abstract class BaseGate extends SilentObjects {
     }
 
     public void generateRoomBoss2() {
-        if (getWorld().getObjects(Bug.class).isEmpty() && getWorld().getObjects(Enemy2.class).isEmpty() && roomFour2Cleared) {
+        if (getWorld().getObjects(Bug.class).isEmpty() && getWorld().getObjects(Bee.class).isEmpty() && roomFour2Cleared) {
             setImage("door_open.png");
             if (isTouching(Player.class)) {
                 System.out.println("Generating Room Boss 2");

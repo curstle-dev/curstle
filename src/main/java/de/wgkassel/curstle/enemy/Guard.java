@@ -1,8 +1,6 @@
 package de.wgkassel.curstle.enemy;
 
-import greenfoot.Actor;
-
-public class Guard extends Actor {
+public class Guard extends BaseEnemy {
     public Guard(){
         setImage("Guard.png");
     }
