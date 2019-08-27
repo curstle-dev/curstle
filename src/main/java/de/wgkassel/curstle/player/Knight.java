@@ -10,6 +10,7 @@ public class Knight extends Player {
     private int delay = 5;
     private boolean allowHit = true;
     private int walkAnimation = 0;
+    private int dodgeCounter = 0;
 
     public Knight() {
         this.getImage().scale(91, 131);
@@ -97,6 +98,7 @@ public class Knight extends Player {
                 walkAnimation = walkAnimation + 1;
             } else {
                 walkAnimation = 0;
+                dodgeCounter = 0;
             }
             this.getImage().scale(91, 131);
         } else if (Greenfoot.isKeyDown("d")) {
@@ -108,6 +110,7 @@ public class Knight extends Player {
                 walkAnimation = walkAnimation + 1;
             } else {
                 walkAnimation = 0;
+                dodgeCounter = 0;
             }
             this.getImage().scale(91, 131);
         } else if (Greenfoot.isKeyDown("a")) {
@@ -119,6 +122,7 @@ public class Knight extends Player {
                 walkAnimation = walkAnimation + 1;
             } else {
                 walkAnimation = 0;
+                dodgeCounter = 0;
             }
             this.getImage().scale(91, 131);
         } else if (Greenfoot.isKeyDown("s")) {
@@ -130,11 +134,24 @@ public class Knight extends Player {
                 walkAnimation = walkAnimation + 1;
             } else {
                 walkAnimation = 0;
+                dodgeCounter = 0;
             }
             this.getImage().scale(91, 131);
         } else if (!upPressed && !downPressed && !leftPressed && !rightPressed && !Greenfoot.isKeyDown("right") && !Greenfoot.isKeyDown("left") && !Greenfoot.isKeyDown("up") && !Greenfoot.isKeyDown("down")) {
-            setImage("Knight.png");
-            this.getImage().scale(91, 131);
+            dodgeCounter++;
+                if(dodgeCounter <= 30) {
+                    setImage("Knight.png");
+                    this.getImage().scale(91, 131);
+            }
+            else{
+                if (dodgeCounter > 50)
+                {
+                    dodgeCounter = 0;
+                }
+                setImage("Knight_dodge.png");
+                this.getImage().scale(91, 131);
+            }
         }
+
     }
 }

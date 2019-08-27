@@ -10,6 +10,7 @@ public class StoryRoom extends BaseWorld {
 
     int story = 1;
     int i = 100;
+    private boolean allowStory = true;
 
     private ChangeCharacter cc;
     private MysteriousMan mM;
@@ -53,41 +54,51 @@ public class StoryRoom extends BaseWorld {
     public void act() {
         if (Greenfoot.mouseClicked(cc)) {
             story++;
+            allowStory = true;
+            MysteriousMan.animation = true;
             Story.removeMe = story - 1;
         }
 
 
-        if (story == 1) {
+        if (story == 1 && allowStory) {
             Story story = new Story(1);
             addObject(story, 670, 400);
+            allowStory = false;
         }
-        if (story == 2) {
+        if (story == 2 && allowStory) {
             Story story = new Story(2);
             addObject(story, 670, 400);
+            allowStory = false;
         }
-        if (story == 3) {
+        if (story == 3 && allowStory) {
             Story story = new Story(3);
             addObject(story, 670, 400);
+            allowStory = false;
         }
-        if (story == 4) {
+        if (story == 4 && allowStory) {
             Story story = new Story(4);
             addObject(story, 670, 400);
+            allowStory = false;
         }
-        if (story == 5) {
+        if (story == 5 && allowStory) {
             Story story = new Story(5);
             addObject(story, 670, 400);
+            allowStory = false;
         }
-        if (story == 6) {
+        if (story == 6 && allowStory) {
             Story story = new Story(6);
             addObject(story, 670, 400);
+            allowStory = false;
         }
-        if (story == 7) {
+        if (story == 7 && allowStory) {
             Story story = new Story(7);
             addObject(story, 670, 400);
+            allowStory = false;
         }
-        if (story == 8) {
+        if (story == 8 && allowStory) {
             Story story = new Story(8);
             addObject(story, 670, 400);
+            allowStory = false;
         }
 
         if (getObjects(Story.class).isEmpty()) {
@@ -104,7 +115,7 @@ public class StoryRoom extends BaseWorld {
             }
         }
 
-        if (getObjects(MysteriousMan.class).isEmpty()){
+        if (getObjects(MysteriousMan.class).isEmpty()) {
             StartScreen2 startScreen2 = new StartScreen2(getPlayer());
             Greenfoot.setWorld(startScreen2);
         }
