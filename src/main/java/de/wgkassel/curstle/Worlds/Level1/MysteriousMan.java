@@ -9,6 +9,7 @@ public class MysteriousMan extends Actor {
     private int speakCounter;
     public static boolean animation = false;
     private int countAnimation;
+    long whenToTurn = System.currentTimeMillis();
 
     public MysteriousMan() {
         setImage("MysteriousMan.png");
@@ -26,6 +27,15 @@ public class MysteriousMan extends Actor {
                 getWorld().removeObject(this);
             }
         }
+        if(StoryRoom.story >= 2) {
+            walk();
+        }
+    }
+
+    public void walk() {
+        this.setImage("MysteriousManRight.png");
+        this.getImage().scale(132,174);
+        move(3);
     }
 
     public void animation() {

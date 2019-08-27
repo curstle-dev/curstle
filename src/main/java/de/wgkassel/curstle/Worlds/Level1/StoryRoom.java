@@ -8,7 +8,7 @@ import greenfoot.Greenfoot;
 
 public class StoryRoom extends BaseWorld {
 
-    int story = 1;
+    static int story = 1;
     int i = 100;
     private boolean allowStory = true;
 
@@ -29,10 +29,10 @@ public class StoryRoom extends BaseWorld {
         addObject(mM, 500, 500);
 
         sb = new Speechbubble();
-        addObject(sb, 670, 400);
+        addObject(sb, mM.getX() + 170, mM.getY() - 100);
 
         cc = new ChangeCharacter();
-        addObject(cc, 840, 400);
+        addObject(cc, mM.getX() + 340, mM.getY() - 100);
 
         generateWalls();
 
@@ -50,6 +50,9 @@ public class StoryRoom extends BaseWorld {
 
     }
 
+    public MysteriousMan getMysteriousMan() {
+        return mM;
+    }
 
     public void act() {
         if (Greenfoot.mouseClicked(cc)) {
@@ -59,45 +62,52 @@ public class StoryRoom extends BaseWorld {
             Story.removeMe = story - 1;
         }
 
+        sb.setLocation(mM.getX() + 170, mM.getY() - 100);
+        cc.setLocation(mM.getX() + 340, mM.getY() - 100);
+        int storyX = mM.getX() + 170;
+        int storyY = mM.getY() - 100;
+
+
 
         if (story == 1 && allowStory) {
             Story story = new Story(1);
-            addObject(story, 670, 400);
+            addObject(story, storyX, storyY);
+
             allowStory = false;
         }
         if (story == 2 && allowStory) {
             Story story = new Story(2);
-            addObject(story, 670, 400);
+            addObject(story, storyX, storyY);
             allowStory = false;
         }
         if (story == 3 && allowStory) {
             Story story = new Story(3);
-            addObject(story, 670, 400);
+            addObject(story, storyX, storyY);
             allowStory = false;
         }
         if (story == 4 && allowStory) {
             Story story = new Story(4);
-            addObject(story, 670, 400);
+            addObject(story, storyX, storyY);
             allowStory = false;
         }
         if (story == 5 && allowStory) {
             Story story = new Story(5);
-            addObject(story, 670, 400);
+            addObject(story, storyX, storyY);
             allowStory = false;
         }
         if (story == 6 && allowStory) {
             Story story = new Story(6);
-            addObject(story, 670, 400);
+            addObject(story, storyX, storyY);
             allowStory = false;
         }
         if (story == 7 && allowStory) {
             Story story = new Story(7);
-            addObject(story, 670, 400);
+            addObject(story, storyX, storyY);
             allowStory = false;
         }
         if (story == 8 && allowStory) {
             Story story = new Story(8);
-            addObject(story, 670, 400);
+            addObject(story, storyX, storyY);
             allowStory = false;
         }
 

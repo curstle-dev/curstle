@@ -1,5 +1,6 @@
 package de.wgkassel.curstle.Worlds.Level1;
 
+import de.wgkassel.curstle.Worlds.StartScreen.StartScreen;
 import greenfoot.Actor;
 
 public class Story extends Actor {
@@ -38,6 +39,8 @@ public static int removeMe;
     @Override
     public void act() {
         super.act();
+        MysteriousMan mM = ((StoryRoom)getWorld()).getMysteriousMan();
+        setLocation(mM.getX() + 170, mM.getY() - 100);
     if (removeAt == removeMe)
         getWorld().removeObject(this);
     }
