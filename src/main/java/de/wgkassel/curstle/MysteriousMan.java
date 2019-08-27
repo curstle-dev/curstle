@@ -18,4 +18,8 @@ public class MysteriousMan extends Actor {
                 Greenfoot.setWorld(storyRoom);
             }
         }
+
+        public void walk() {
+
+        }
 }
