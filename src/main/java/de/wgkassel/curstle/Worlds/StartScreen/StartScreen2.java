@@ -8,12 +8,9 @@ public class StartScreen2 extends BaseWorld {
 
     public StartScreen2(Player player) {
         super(player);
-    }
-
-    @Override
-    public void act() {
         prepare();
     }
+
 
     public void prepare() {
         MainGate gate = new MainGate();
