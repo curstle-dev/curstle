@@ -8,6 +8,7 @@ import de.wgkassel.curstle.player.Knight;
 import de.wgkassel.curstle.player.Mage;
 import de.wgkassel.curstle.player.SwordHit;
 import greenfoot.Greenfoot;
+import greenfoot.GreenfootImage;
 
 public class StartScreen extends BaseWorld {
 
@@ -22,6 +23,7 @@ public class StartScreen extends BaseWorld {
     public static boolean shouldStart = false;
     private boolean doorgenerated = false;
     private int prevCcc = 0;
+    private int animationCounter;
 
 
     /**
@@ -39,6 +41,7 @@ public class StartScreen extends BaseWorld {
 
     @Override
     public void act() {
+        backgroundAnimation();
         removeObject(cc);
         removeObject(cc2);
         if (shouldStart && i >= 0) {
@@ -86,7 +89,7 @@ public class StartScreen extends BaseWorld {
         addObject(player, getWidth() / 2, getHeight() / 10 * 9);
 
         MysteriousMan mysteriousMan = new MysteriousMan();
-        addObject(mysteriousMan, getWidth()/2, getHeight()/2 + 160);
+        addObject(mysteriousMan, getWidth() / 2, getHeight() / 2 + 160);
 
         cc = new ChangeCharacter(); //Used to change the character
 
@@ -145,4 +148,34 @@ public class StartScreen extends BaseWorld {
         }
     }
 
+    public void backgroundAnimation() {
+        animationCounter++;
+        switch (animationCounter) {
+            case 100:
+                setBackground("StartScreen1.png");
+                break;
+            case 120:
+                setBackground("StartScreen2.png");
+                break;
+            case 220:
+                setBackground("StartScreen3.png");
+                break;
+            case 240:
+                setBackground("StartScreen4.png");
+                break;
+            case 340:
+                setBackground("StartScreen5.png");
+                break;
+            case 360:
+                setBackground("StartScreen6.png");
+                break;
+            case 460:
+                setBackground("StartScreen7.png");
+                break;
+            case 480:
+                setBackground("StartScreen8.png");
+                animationCounter = 0;
+                break;
+        }
+    }
 }
