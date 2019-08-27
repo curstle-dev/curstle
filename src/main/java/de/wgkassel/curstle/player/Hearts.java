@@ -1,7 +1,7 @@
 package de.wgkassel.curstle.player;
 
 
-import de.wgkassel.curstle.Worlds.Screens.StartScreen;
+import de.wgkassel.curstle.Worlds.StartScreen.StartScreen;
 import greenfoot.Actor;
 import greenfoot.GreenfootImage;
 

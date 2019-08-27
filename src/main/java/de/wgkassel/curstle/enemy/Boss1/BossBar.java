@@ -1,15 +1,11 @@
 package de.wgkassel.curstle.enemy.Boss1;
 
-import de.wgkassel.curstle.enemy.Boss1.Boss;
 import greenfoot.Actor;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;
 
 public class BossBar extends Actor {
 
-    private int startLives = 30; //lives of the Boss
-    private int barWidth = 330; // Width of the Bar
-    private int barHeight = 60; // Height of the Bar
     private int lives = 30;
 
     public BossBar() {
@@ -30,10 +26,13 @@ public class BossBar extends Actor {
     /**
      * creates the Bar and updates the filling of it
      */
-    public void update() {
+    private void update() {
+        int startLives = 30;
         lives = Boss.lives;
         if (lives != 0) {
-            int pixelsPerLive = barWidth / startLives; //pixels per life
+            int barWidth = 330;
+            int pixelsPerLive = barWidth / startLives;
+            int barHeight = 60;
             setImage(new GreenfootImage(barWidth + 2, barHeight + 2));
             GreenfootImage image = getImage();
             image.setColor(Color.WHITE);

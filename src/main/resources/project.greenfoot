@@ -2,13 +2,13 @@
 
 # Class definitions
 class.de.wgkassel.curstle.RoomContent.Door.image=door_placeholder.png
-class.de.wgkassel.curstle.Worlds.Screens.StartScreen.image=StartScreen.png
-class.de.wgkassel.curstle.Worlds.Screens.StartScreen2.image=StartScreen.png
+class.de.wgkassel.curstle.Worlds.StartScreen.image=StartScreen.png
+class.de.wgkassel.curstle.Worlds.StartScreen.StartScreen2.image=StartScreen.png
 class.de.wgkassel.curstle.Worlds.Level1.RoomOne.image=world.png
 class.de.wgkassel.curstle.Button.image=actor.png
 class.de.wgkassel.curstle.enemy.Bug.image=enemy.png
 class.de.wgkassel.curstle.enemy.Endboss.Endboss.image=krasser_enemy.png
-class.de.wgkassel.curstle.enemy.Enemy2.image=bee2.png
+class.de.wgkassel.curstle.enemy.Bee.image=bee2.png
 class.de.wgkassel.curstle.enemy.BeeBullet.image=beeBullet2.png
 
 class.de.wgkassel.curstle.Worlds.Level1.RoomOne.image=moss_floor.png
@@ -20,7 +20,9 @@ class.de.wgakssel.curstle.RoomContent.BrickWall.image=brickWall.png
 class.de.wgkassel.curstle.RoomContent.Shelf.image=Regal.png
 class.de.wgkassel.curstle.RoomContent.CornerWall.image=moss_wall_corner.png
 
-class.de.wgkassel.curstle.Worlds.Screens.StoryRoom.image=moss_floor.png
+class.de.wgkassel.curstle.Worlds.Level1.StoryRoom.image=moss_floor.png
+
+class.de.wgkassel.curstle.Worlds.StartScreen.StartScreen.image=StartScreen.png
 
 class.de.wgkassel.curstle.Treasure.image=treasure.png
 class.de.wgkassel.curstle.Treasure.image=treasure_hover.png
@@ -50,10 +52,10 @@ class.de.wgkassel.curstle.CornerWall.image=stone_wall_corner.png
 class.de.wgkassel.curstle.enemy.Boss1.Boss.image=Boss.png
 class.de.wgkassel.curstle.enemy.Boss1.WeaponOfTheBoss.image=Endboss_sword.png
 class.de.wgkassel.curstle.Exit.image=door.png
-class.de.wgkassel.curstle.Worlds.Screens.VictoryText.image=victory.png
+class.de.wgkassel.curstle.Worlds.VictoryScreen.VictoryText.image=victory.png
 class.de.wgkassel.curstle.enemy.Endboss.EndbossWeapon.image=weaponoftheboss.png
-class.de.wgkassel.curstle.Worlds.Screens.VictoryScreen.image=EndScreen.png
-class.de.wgkassel.curstle.Worlds.Screens.Endscreen.image=deathscreen.png
+class.de.wgkassel.curstle.Worlds.VictoryScreen.VictoryScreen.image=EndScreen.png
+class.de.wgkassel.curstle.Worlds.EndScreen.Endscreen.image=deathscreen.png
 
 
 # Editor Settings
@@ -80,7 +82,7 @@ readme.y=10
 
 # Target definitions (unknown use)
 target1.height=50
-target1.name=de.wgkassel.curstle.Worlds.Screens.StartScreen
+target1.name=de.wgkassel.curstle.Worlds.StartScreen
 target1.showInterface=false
 target1.type=ClassTarget
 target1.typeParameters=
@@ -92,4 +94,4 @@ target1.y=0
 version=3.0.0
 
 # Misc
-world.lastInstantiated=de.wgkassel.curstle.Worlds.Screens.StartScreen
+world.lastInstantiated=de.wgkassel.curstle.Worlds.StartScreen

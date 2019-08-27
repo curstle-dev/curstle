@@ -11,17 +11,13 @@ import greenfoot.Greenfoot;
 
 
 public class MageShot extends Actor {
-    private int cooldown = 0;
-
-    public MageShot() {
-        setImage("MageShot.png");
-        this.getImage().scale(32, 32);
-
-    }
+    private int coolDown = 0;
+    private int counter = 1;
+    private long wait = System.currentTimeMillis();
 
     public void act() {
         move(20);
-        cooldown++;
+        coolDown++;
         if (isTouching(EndbossImage.class) && !Endboss.invisible) {
             Endboss.live--;
             Endboss.live--;
@@ -39,17 +35,51 @@ public class MageShot extends Actor {
             getWorld().removeObject(this);
         } else if (isAtEdge()) {
             getWorld().removeObject(this);
-        } else if (cooldown >= 25) {
+        } else if (coolDown >= 25) {
             getWorld().removeObject(this);
-            cooldown = 0;
-        } else bemoreOp();
+            coolDown = 0;
+        } else beMoreOp();
+        counter();
+        switchImage();
+
     }
 
-    public void bemoreOp() {
+    private void beMoreOp() {
         if (isTouching(WeaponOfTheBoss.class)) {
             removeTouching(WeaponOfTheBoss.class);
             getWorld().removeObject(this);
         }
 
+    }
+
+    private void switchImage() {
+        switch (counter) {
+            case 1:
+                setImage("Fire1.png");
+                this.getImage().scale(50, 50);
+                break;
+            case 2:
+                setImage("Fire2.png");
+                this.getImage().scale(50, 50);
+                break;
+            case 3:
+                setImage("Fire3.png");
+                this.getImage().scale(50, 50);
+                break;
+            case 4:
+                setImage("Fire4.png");
+                this.getImage().scale(50, 50);
+                break;
+        }
+    }
+
+    private void counter() {
+        if (System.currentTimeMillis() - wait > 100){
+            counter++;
+            wait = System.currentTimeMillis();
+            if (counter == 5){
+                counter = 1;
+            }
+        }
     }
 }

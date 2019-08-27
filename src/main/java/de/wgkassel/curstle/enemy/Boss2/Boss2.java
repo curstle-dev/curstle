@@ -1,8 +1,6 @@
 package de.wgkassel.curstle.enemy.Boss2;
 
 import de.wgkassel.curstle.Worlds.Level1.BaseWorld;
-import de.wgkassel.curstle.enemy.Endboss.EndbossWeapon;
-import de.wgkassel.curstle.enemy.Enemy2;
 import de.wgkassel.curstle.player.Player;
 import greenfoot.Actor;
 import greenfoot.Greenfoot;
@@ -16,12 +14,12 @@ public class Boss2 extends Actor {
     private long pause = System.currentTimeMillis();
     private int countAim = 0;
     private int countAround = 0;
-    State state = State.SPAWN;
-    LastState lastState = LastState.SPAWN;
+    private State state = State.SPAWN;
+    private LastState lastState = LastState.SPAWN;
 
-    enum State {AIM, AROUND, SPAWN, PAUSE, NOTHING;}
+    enum State {AIM, AROUND, SPAWN, PAUSE, NOTHING}
 
-    enum LastState {AIM, AROUND, SPAWN, PAUSE;}
+    enum LastState {AIM, AROUND, SPAWN, PAUSE}
 
 
     public Boss2() {
@@ -37,7 +35,7 @@ public class Boss2 extends Actor {
         die();
     }
 
-    public void attack() {
+    private void attack() {
         switch (state) {
 
             case PAUSE:
@@ -61,14 +59,14 @@ public class Boss2 extends Actor {
 
     }
 
-    public void delayAttack() {
+    private void delayAttack() {
         if (System.currentTimeMillis() - wait > 2000) {
             allowAttack = true;
         }
     }
 
 
-    public void shootAtPlayer() {
+    private void shootAtPlayer() {
         if (allowAttack && countAim < 6) {
             Boss2FollowBullet boss2FollowBullet = new Boss2FollowBullet();
             getWorld().addObject(boss2FollowBullet, this.getX(), this.getY());
@@ -85,7 +83,7 @@ public class Boss2 extends Actor {
     }
 
 
-    public void shootAround() {
+    private void shootAround() {
         int x = 0;
         if (System.currentTimeMillis() - shotPause > 2000 && countAround < 6) {
             for (int i = 0; i <= 15; i++) {
@@ -100,7 +98,7 @@ public class Boss2 extends Actor {
         }
     }
 
-    public void generateBullet(int rotationOffset) {
+    private void generateBullet(int rotationOffset) {
         Boss2Bullet boss2Bullet = new Boss2Bullet();
         this.getWorld().addObject(boss2Bullet, this.getX() + 90, this.getY() + 10);
         int rotation = boss2Bullet.getRotation();
@@ -108,7 +106,7 @@ public class Boss2 extends Actor {
         shotPause = System.currentTimeMillis();
     }
 
-    public void spawnEnemy() {
+    private void spawnEnemy() {
 
         for (int i = 0; i < 3; i++) {
             Boss2Enemy boss2Enemy = new Boss2Enemy();
@@ -122,9 +120,7 @@ public class Boss2 extends Actor {
 
 
     /**
-     * creates a random X coordinate thats not in the player or near him
-     *
-     * @return
+     * @return a random X coordinate thats not in the player or near him
      */
     private int getRandomX() {
         Player player = ((BaseWorld) getWorld()).getPlayer();
@@ -137,9 +133,7 @@ public class Boss2 extends Actor {
     }
 
     /**
-     * creates a random Y coordinate thats not on the player or near him
-     *
-     * @return
+     * @return a random Y coordinate thats not on the player or near him
      */
     private int getRandomY() {
         Player player = ((BaseWorld) getWorld()).getPlayer();
@@ -151,7 +145,7 @@ public class Boss2 extends Actor {
         return y;
     }
 
-    public void pause() {
+    private void pause() {
         state = State.NOTHING;
         if (System.currentTimeMillis() - pause > 3000) {
             switch (lastState) {
@@ -174,14 +168,15 @@ public class Boss2 extends Actor {
         }
     }
 
-    public void longPause() {
+    private void longPause() {
         if (System.currentTimeMillis() - pause > 10000) {
             lastState = LastState.PAUSE;
             pause();
         }
     }
-    public void die(){
-        if (lives <= 0){
+
+    private void die() {
+        if (lives <= 0) {
             getWorld().removeObject(this);
         }
     }

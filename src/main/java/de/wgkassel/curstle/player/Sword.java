@@ -13,126 +13,54 @@ import greenfoot.Greenfoot;
 
 import java.util.List;
 
+import static de.wgkassel.curstle.player.Direction.LEFT;
+import static de.wgkassel.curstle.player.Direction.UP;
+
 public class Sword extends Actor {
 
-    static boolean allowHit = true;
-    static boolean allowHitBoss2Enemy = true;
-    static boolean allowBossHit = true;
-    static boolean allowHitBoss2 = true;
-    static boolean allowEndbossHit = true;
-    private int swordRange = 190;
-    static boolean allowHitEnemy2 = true;
+
+
+
+    int startRotation;
+    int x;
+    static boolean amIThere = true;
+    public static int swordX;
+    public static int swordY;
 
     public Sword() {
-        setImage("sword.png");
-        this.getImage().scale(150, 150);
-
+        setImage("Sword.png");
+        this.getImage().scale(190, 190);
     }
 
     @Override
     public void act() {
         super.act();
-        checkEnemy();
-        checkEnemy2();
-        checkBoss();
-        checkEndboss();
         followPlayer();
-        resetAllowHits();
-        checkBoss2Enemy();
-        checkBoss2();
+        animation();
 
     }
 
-    /**
-     * resets allowHits
-     */
-    public void resetAllowHits() {
-        if (!Greenfoot.isKeyDown("up") && !Greenfoot.isKeyDown("down") && !Greenfoot.isKeyDown("right") && !Greenfoot.isKeyDown("left")) {
-            allowHit = true;
-            allowBossHit = true;
-            allowEndbossHit = true;
-            allowHitEnemy2 = true;
-        }
-    }
-
-    /**
-     * checks if there is a Bug
-     */
-    public void checkEnemy() {
-        List<MainEnemy> intersectingObjects = getObjectsInRange(swordRange, MainEnemy.class);
-        if (allowHit) {
-            if (intersectingObjects != null) {
-                intersectingObjects.forEach(MainEnemy::lowerHealth);
-                allowHit = false;
+    public void animation() {
+        setRotation(startRotation + x);
+        if (Knight.swordDirection == UP || Knight.swordDirection == LEFT) {
+            x = x - 9;
+            if (x < -90) {
+                x = 0;
+                amIThere = false;
+                getWorld().removeObject(this);
             }
-        } else if (intersectingObjects == null) {
-            allowHit = true;
-        }
-    }
-
-    /**
-     * checks if there is a Boss2Enemy
-     */
-    public void checkBoss2Enemy() {
-        List<Boss2Enemy> intersectingObjects = getObjectsInRange(swordRange, Boss2Enemy.class);
-        if (allowHitBoss2Enemy) {
-            if (intersectingObjects != null) {
-                intersectingObjects.forEach(Boss2Enemy::lowerHealth);
-                allowHitBoss2Enemy = false;
+        } else {
+            x = x + 9;
+            if (getRotation() > startRotation + 90) {
+                x = 0;
+                amIThere = false;
+                getImage().setTransparency(255);
+                getWorld().removeObject(this);
             }
-        } else if (intersectingObjects == null) {
-            allowHitBoss2Enemy = true;
-        }
-    }
-
-    /**
-     * checks if there is a BEEEEEEEE
-     */
-    public void checkEnemy2() {
-        List<Enemy2> intersectingObjects = getObjectsInRange(swordRange, Enemy2.class);
-        if (allowHitEnemy2) {
-            if (intersectingObjects != null) {
-                intersectingObjects.forEach(Enemy2::lowerHealth);
-                allowHitEnemy2 = false;
-            }
-        } else if (intersectingObjects == null) {
-            allowHitEnemy2 = true;
-        }
-    }
-
-    /**
-     * check the if there is a Boss
-     */
-    public void checkBoss() {
-        if (!getObjectsInRange(swordRange, BossImage.class).isEmpty() && allowBossHit) {
-            Boss.lives--;
-            Greenfoot.playSound("hit.wav");
-            allowBossHit = false;
         }
     }
 
 
-    /**
-     * check the if there is a Boss2
-     */
-    public void checkBoss2() {
-        if (!getObjectsInRange(swordRange, Boss2.class).isEmpty() && allowHitBoss2) {
-            Boss2.lives--;
-            Greenfoot.playSound("hit.wav");
-            allowHitBoss2 = false;
-        }
-    }
-
-    /**
-     * check if theres an Endboss
-     */
-    public void checkEndboss() {
-        if (!getObjectsInRange(swordRange, EndbossImage.class).isEmpty() && allowEndbossHit && !Endboss.invisible) {
-            Endboss.live--;
-            Greenfoot.playSound("hit.wav");
-            allowEndbossHit = false;
-        }
-    }
 
     /**
      * Sword follows the player :o
@@ -145,20 +73,36 @@ public class Sword extends Actor {
         switch (Knight.swordDirection) {
             case UP:
                 setLocation(playerX, playerY - 100);
+                swordX = this.getX();
+                swordY = this.getY();
                 this.setRotation(90);
+                startRotation = 90;
+                getImage().setTransparency(0);
                 break;
             case DOWN:
-                setLocation(playerX, playerY + 100);
-                this.setRotation(175);
+                getImage().setTransparency(255);
+                setLocation(playerX + 30, playerY + 40);
+                swordX = this.getX();
+                swordY = this.getY();
+                this.setRotation(90);
+                startRotation = 90;
                 break;
             case LEFT:
-                setLocation(playerX - 100, playerY);
-                this.setRotation(0);
+                getImage().setTransparency(255);
+                setLocation(playerX - 37, playerY + 28);
+                swordX = this.getX();
+                swordY = this.getY();
+                this.setRotation(270);
+                startRotation = 270;
                 break;
             case RIGHT:
             default:
-                setLocation(playerX + 100, playerY);
-                this.setRotation(90);
+                getImage().setTransparency(255);
+                setLocation(playerX + 37, playerY  + 28);
+                swordX = this.getX();
+                swordY = this.getY();
+                this.setRotation(0);
+                startRotation =  0;
                 break;
         }
 

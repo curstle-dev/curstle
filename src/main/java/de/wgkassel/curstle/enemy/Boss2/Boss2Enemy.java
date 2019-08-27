@@ -12,9 +12,8 @@ import java.util.List;
 
 public class Boss2Enemy extends Actor {
 
-    boolean deBounce = false;
-    int lives = 4;
-    boolean hit;
+    private boolean deBounce = false;
+    private int lives = 4;
 
     public Boss2Enemy() {
         setImage("Boss2Enemy.png");
@@ -41,7 +40,6 @@ public class Boss2Enemy extends Actor {
             lives--;
             lives--;
             removeTouching(MageShot.class);
-            hit = true;
             if (lives == 0) {
                 getWorld().removeObject(this);
             }
@@ -56,7 +54,6 @@ public class Boss2Enemy extends Actor {
         Greenfoot.playSound("hit.wav");
         lives--;
         move(-100);
-        hit = true;
         if (lives == 0) {
             getWorld().removeObject(this);
         }
@@ -65,7 +62,7 @@ public class Boss2Enemy extends Actor {
     /**
      * enemy moves forwards
      */
-    public void walk() {
+    private void walk() {
         List<Player> players = getObjectsInRange(600, Player.class);
         int nPlayers = players.size();
         if (nPlayers >= 1) {
@@ -86,7 +83,7 @@ public class Boss2Enemy extends Actor {
     /**
      * Enemy follows the Player
      */
-    public void followThePlayer() {
+    private void followThePlayer() {
         List<Player> players = getObjectsInRange(900, Player.class);
         int nPlayers = players.size();
         if (nPlayers >= 1) {

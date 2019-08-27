@@ -5,8 +5,8 @@ import de.wgkassel.curstle.RoomContent.CornerWoodWall;
 import de.wgkassel.curstle.RoomContent.Wall;
 import de.wgkassel.curstle.RoomContent.WoodWall;
 import de.wgkassel.curstle.enemy.BaseEnemy;
+import de.wgkassel.curstle.enemy.Bee;
 import de.wgkassel.curstle.enemy.Bug;
-import de.wgkassel.curstle.enemy.Enemy2;
 import de.wgkassel.curstle.items.*;
 import de.wgkassel.curstle.player.Player;
 import greenfoot.World;
@@ -232,26 +232,26 @@ public abstract class BaseWorld extends World {
         HashMap<Class<? extends BaseWorld>, HashMap<Class<? extends BaseEnemy>, Integer>> levelmap = player.getLevelmap();
         HashMap<Class<? extends BaseEnemy>, Integer> enemyMap = levelmap.get(this.getClass());
         if (enemyMap != null) {
-            Integer beeAmount = enemyMap.get(Enemy2.class);
+            Integer beeAmount = enemyMap.get(Bee.class);
 
             if (beeAmount == null) {
                 beeAmount = 0;
             }
 
             if (beeAmount >= 1) {
-                addObject(new Enemy2(), getWidth() / 8 * 5, getHeight() / 4 * 3);
+                addObject(new Bee(), getWidth() / 8 * 5, getHeight() / 4 * 3);
             }
 
             if (beeAmount >= 2) {
-                addObject(new Enemy2(), getWidth() / 5 * 2, getHeight() / 12 * 5);
+                addObject(new Bee(), getWidth() / 5 * 2, getHeight() / 12 * 5);
             }
 
             if (beeAmount >= 3) {
-                addObject(new Enemy2(), getWidth() / 4 * 3, getHeight() / 4);
+                addObject(new Bee(), getWidth() / 4 * 3, getHeight() / 4);
             }
 
             if (beeAmount >= 4) {
-                addObject(new Enemy2(), getWidth() / 7 * 5, getHeight() / 2);
+                addObject(new Bee(), getWidth() / 7 * 5, getHeight() / 2);
             }
         }
     }
