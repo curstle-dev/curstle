@@ -9,6 +9,7 @@ import de.wgkassel.curstle.enemy.Bee;
 import de.wgkassel.curstle.enemy.Bug;
 import de.wgkassel.curstle.items.*;
 import de.wgkassel.curstle.player.Player;
+import greenfoot.GreenfootImage;
 import greenfoot.World;
 
 import java.util.HashMap;
@@ -255,5 +256,6 @@ public abstract class BaseWorld extends World {
             }
         }
     }
+
 
 }
